@@ -1,0 +1,80 @@
+{
+    "name": "sierratecnologia/boravel",
+    "description": "Recursos para Desenvolvimento Complexo",
+    "license": "MIT",
+    "keywords": [
+        "botman",
+        "chatbot",
+        "socrates",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "Ricardo Rebello Sierra",
+            "email": "ricardo@sierratecnologia.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "botman/botman": "~2.6",
+        "botman/driver-web": "~1.5",
+        "botman/driver-slack": "~2.2",
+        "ricardosierra/driver-discord": ">=1.0.7",
+        "botman/driver-twitter": ">=1.0",
+        "botman/driver-telegram": "^1.5",
+        "botman/driver-facebook": ">=1.10",
+        "botman/studio-addons": "dev-master",
+        "botman/tinker": ">=1.2",
+        "fideloper/proxy": ">=4.3",
+        "laravel/framework": "5.*|6.*|7.*|8.*",
+        "laravel/tinker": ">=2.0",
+        "clue/stdio-react": ">=2.3",
+        "mpociot/slack-client": ">=1.2",
+        "pusher/pusher-php-server": ">=3.4",
+        "ricardosierra/changelog": "~1.4",
+        "ricardosierra/validate": "^0.2",
+        "venturecraft/revisionable": ">=1.30",
+        "jeroennoten/laravel-adminlte": ">=1.24",
+        "sierratecnologia/locaravel": "dev-master",
+        "sierratecnologia/muleta": "dev-master",
+        "sierratecnologia/tracking": "dev-master"
+    },
+    "suggest": {
+        "sierratecnologia/payment-laravel": "Pagamento"
+    },
+    "autoload": {
+        "psr-4": {
+            "Boravel\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": [],
+        "post-create-project-cmd": []
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../**",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:botman/studio-addons.git"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Boravel\\BoravelProvider"
+            ],
+            "dont-discover": [
+                "laravel/cashier"
+            ]
+        }
+    }
+}
