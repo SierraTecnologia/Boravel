@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Negocios;
+namespace Boravel\Repositories\Negocios;
 
 use Carbon\Carbon;
-use App\Repositories\CmsRepository;
-use App\Repositories\TranslationRepository;
+use Boravel\Repositories\CmsRepository;
+use Boravel\Repositories\TranslationRepository;
 use App\Services\Midia\FileService;
 
 use Cms;
@@ -12,7 +12,7 @@ use Config;
 use CryptoService;
 use App\Models\Negocios\Page;
 use Illuminate\Support\Facades\Schema;
-use App\Repositories\CmsRepository as BaseRepository;
+use Boravel\Repositories\CmsRepository as BaseRepository;
 
 
 class PageRepository extends BaseRepository

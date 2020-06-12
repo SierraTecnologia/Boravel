@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Boravel\Notifications\Metrics;
+namespace Boravel\Notifications\Metrics;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;

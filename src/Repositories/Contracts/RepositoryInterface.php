@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Repositories\Contracts;
+namespace Boravel\Repositories\Contracts;
 
 interface RepositoryInterface
 {

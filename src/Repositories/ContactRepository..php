@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Boravel\Repositories;
 
 use Carbon\Carbon;
 use App\Models\Contact;

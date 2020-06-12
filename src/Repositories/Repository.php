@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace Boravel\Repositories;
 
-use App\Repositories\Contracts\RepositoryInterface;
+use Boravel\Repositories\Contracts\RepositoryInterface;
 use App\Models\Model;
 use Illuminate\Container\Container as App;
 

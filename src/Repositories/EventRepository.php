@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories;
+namespace Boravel\Repositories;
 
 use Carbon\Carbon;
 use App\Models\Calendar\Event;
-use App\Repositories\CmsRepository;
-use App\Repositories\TranslationRepository;
+use Boravel\Repositories\CmsRepository;
+use Boravel\Repositories\TranslationRepository;
 
 class EventRepository extends CmsRepository
 {

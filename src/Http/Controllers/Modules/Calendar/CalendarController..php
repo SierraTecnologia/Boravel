@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Http\Controllers\Gp;
+namespace Boravel\Http\Controllers\Modules\Calendar;
 
 use Boravel\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace Boravel\Repositories;
 
 use Carbon\Carbon;
 use App\Models\Negocios\Faq;
-use App\Repositories\CmsRepository;
+use Boravel\Repositories\CmsRepository;
 
 class FaqRepository extends CmsRepository
 {

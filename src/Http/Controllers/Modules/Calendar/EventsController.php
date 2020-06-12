@@ -4,7 +4,7 @@ namespace Boravel\Http\Controllers\Modules\Calendar;
 
 use Boravel\Http\Controllers\Controller;
 use Boravel\Services\EventService;
-use App\Repositories\EventRepository;
+use Boravel\Repositories\EventRepository;
 use Boravel\Http\Controllers\Controller as BaseController;
 
 class EventsController extends BaseController

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories;
+namespace Boravel\Repositories;
 
 use Auth;
 use Config;
 use CryptoService;
 use Boravel\Models\Digital\Midia\File;
-use App\Repositories\CmsRepository;
+use Boravel\Repositories\CmsRepository;
 use App\Services\Midia\FileService;
 use Illuminate\Support\Facades\Schema;
 

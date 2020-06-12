@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories;
+namespace Boravel\Repositories;
 
 use Carbon\Carbon;
 use Cms;
 use App\Models\Blog\Blog;
-use App\Repositories\CmsRepository;
-use App\Repositories\TranslationRepository;
+use Boravel\Repositories\CmsRepository;
+use Boravel\Repositories\TranslationRepository;
 use App\Services\Midia\FileService;
 
 class BlogRepository extends CmsRepository

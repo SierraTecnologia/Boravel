@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Http\Controllers\Api;
+namespace Boravel\Http\Api;
 
 use Illuminate\Http\Request;
 

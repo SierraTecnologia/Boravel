@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Repositories\Negocios;
+namespace Boravel\Repositories\Negocios;
 
 use Cms;
 use Config;
 use CryptoService;
 use App\Models\UserMeta;
 use Illuminate\Support\Facades\Schema;
-use App\Repositories\CmsRepository as BaseRepository;
-use App\Repositories\TranslationRepository;
+use Boravel\Repositories\CmsRepository as BaseRepository;
+use Boravel\Repositories\TranslationRepository;
 
 class MemberRepository extends BaseRepository
 {

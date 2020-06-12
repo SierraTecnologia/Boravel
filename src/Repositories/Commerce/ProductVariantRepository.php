@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Commerce;
+namespace Boravel\Repositories\Commerce;
 
 use App\Models\Commerce\Variant;
 use App\Models\Commerce\Product;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Commerce;
+namespace Boravel\Repositories\Commerce;
 
 use Illuminate\Support\Facades\Session;
 use App\Models\Commerce\Cart;

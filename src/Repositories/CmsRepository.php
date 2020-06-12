@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace Boravel\Repositories;
 
 use Carbon\Carbon;
-use App\Repositories\TranslationRepository;
+use Boravel\Repositories\TranslationRepository;
 use Illuminate\Support\Facades\Schema;
 
 class CmsRepository

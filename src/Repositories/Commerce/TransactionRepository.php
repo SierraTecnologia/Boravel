@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Commerce;
+namespace Boravel\Repositories\Commerce;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;

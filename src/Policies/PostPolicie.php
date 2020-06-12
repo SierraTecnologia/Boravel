@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace Boravel\Policies;
 
 use App\User;
 use App\Post;

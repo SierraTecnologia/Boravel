@@ -2,7 +2,7 @@
 
 namespace Boravel\Services\Negocios;
 
-use App\Repositories\Negocios\PageRepository;
+use Boravel\Repositories\Negocios\PageRepository;
 use Boravel\Services\BaseService;
 use Illuminate\Support\Facades\Config;
 

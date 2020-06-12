@@ -4,7 +4,7 @@ namespace Boravel\Http\Controllers\Modules\Midia;
 
 use Config;
 use Boravel\Http\Controllers\Controller;
-use App\Repositories\ImageRepository;
+use Boravel\Repositories\ImageRepository;
 
 class GalleryController extends Controller
 {

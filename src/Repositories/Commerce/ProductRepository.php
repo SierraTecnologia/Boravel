@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Commerce;
+namespace Boravel\Repositories\Commerce;
 
 use App\Models\Commerce\Product;
-use App\Repositories\Commerce\FavoriteRepository;
+use Boravel\Repositories\Commerce\FavoriteRepository;
 use Illuminate\Support\Facades\Schema;
 
 class ProductRepository

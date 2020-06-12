@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace Boravel\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\User;

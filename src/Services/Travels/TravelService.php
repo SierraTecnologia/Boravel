@@ -6,7 +6,7 @@ use Lang;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
-use App\Repositories\TravelRepository;
+use Boravel\Repositories\TravelRepository;
 
 class TravelService
 {

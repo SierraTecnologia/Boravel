@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace Boravel\Repositories;
 
 use App\Models\Negocios\Promotion;
-use App\Repositories\CmsRepository;
-use App\Repositories\TranslationRepository;
+use Boravel\Repositories\CmsRepository;
+use Boravel\Repositories\TranslationRepository;
 
 class PromotionRepository extends CmsRepository
 {

@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories\Negocios;
+namespace Boravel\Repositories\Negocios;
 
-use App\Repositories\CmsRepository as BaseRepository;
+use Boravel\Repositories\CmsRepository as BaseRepository;
 use App\Models\Negocios\Menu;
 use Cache;
 use Illuminate\Support\Facades\Schema;
