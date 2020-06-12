@@ -78,7 +78,7 @@ class BoravelProvider extends ServiceProvider
         /**
          * Layoults
          */
-        \JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        \JeroenNoten\LaravelAdminLte\AdminLteServiceProvider::class,
 
 
         /**
