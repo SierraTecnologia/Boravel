@@ -102,9 +102,9 @@ class EmailConfirmationService
      */
     protected function getToken()
     {
-        $token = str_random(24);
+        $token = \Illuminate\Support\Str::random(24);
         while ($this->db->table('email_confirmations')->where('token', '=', $token)->exists()) {
-            $token = str_random(25);
+            $token = \Illuminate\Support\Str::random(25);
         }
         return $token;
     }

@@ -53,7 +53,7 @@ class CreateJointPermissionsTable extends Migration
 
         // Ensure unique name
         while (DB::table('roles')->where('name', '=', $publicRoleData['display_name'])->count() > 0) {
-            $publicRoleData['display_name'] = $publicRoleData['display_name'] . str_random(2);
+            $publicRoleData['display_name'] = $publicRoleData['display_name'] . \Illuminate\Support\Str::random(2);
         }
         $publicRoleId = DB::table('roles')->insertGetId($publicRoleData);
 

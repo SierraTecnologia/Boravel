@@ -31,7 +31,7 @@ class ActivateService
      */
     public function sendActivationToken()
     {
-        $token = md5(str_random(40));
+        $token = md5(\Illuminate\Support\Str::random(40));
 
         auth()->user()->meta->update([
             'activation_token' => $token

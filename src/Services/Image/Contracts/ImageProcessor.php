@@ -1,11 +1,11 @@
 <?php
 
-namespace SiInteractions\Services\Image\Contracts;
+namespace Boravel\Services\Image\Contracts;
 
 /**
  * Interface ImageProcessor.
  *
- * @package SiInteractions\Services\Image\Contracts
+ * @package Boravel\Services\Image\Contracts
  */
 interface ImageProcessor
 {

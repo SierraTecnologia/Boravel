@@ -308,7 +308,7 @@ class UserService
      */
     public function setAndSendUserActivationToken($user)
     {
-        $token = md5(str_random(40));
+        $token = md5(\Illuminate\Support\Str::random(40));
 
         $user->meta()->update([
             'activation_token' => $token,

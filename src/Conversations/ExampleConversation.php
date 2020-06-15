@@ -1,6 +1,6 @@
 <?php
 
-namespace SiInteractions\Conversations;
+namespace Boravel\Conversations;
 
 use Illuminate\Foundation\Inspiring;
 

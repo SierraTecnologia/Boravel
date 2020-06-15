@@ -316,7 +316,7 @@ class RegisterController extends Controller
         $userData = [
             'name' => $socialUser->getName(),
             'email' => $socialUser->getEmail(),
-            'password' => str_random(30)
+            'password' => \Illuminate\Support\Str::random(30)
         ];
         return $this->registerUser($userData, $socialAccount, $emailVerified);
     }

@@ -108,7 +108,8 @@ class BoravelProvider extends ServiceProvider
     /**
      * Alias the services in the boot.
      */
-    public function boot(Router $router, Dispatcher $events)
+    public function boot()
+    // public function boot(Router $router, Dispatcher $events)
     {
         parent::boot();
 
@@ -133,7 +134,7 @@ class BoravelProvider extends ServiceProvider
         $this->publishAssets();
         $this->publishMigrations();
 
-        $this->bootEvents($events);
+        $this->bootEvents();
     }
 
     /**
@@ -264,28 +265,28 @@ class BoravelProvider extends ServiceProvider
         );
 
     }
-    protected function bootEvents(Dispatcher $events)
+    protected function bootEvents()
     {
-        $events->listen(
+        $this->app['events']->listen(
             BuildingMenu::class, function (BuildingMenu $event) {
                 (new \Support\Template\Mounters\SystemMount())->loadMenuForAdminlte($event);
             }
         );
 
-
-        // Wire up model event callbacks even if request is not for admin.  Do this
-        // after the usingAdmin call so that the callbacks run after models are
-        // mutated by Decoy logic.  This is important, in particular, so the
-        // Validation observer can alter validation rules before the onValidation
-        // callback runs.
-        $this->app['events']->listen(
-            'eloquent.*',
-            'Boravel\Observers\ModelCallbacks'
-        );
-        $this->app['events']->listen(
-            'facilitador::model.*',
-            'Boravel\Observers\ModelCallbacks'
-        );
+        // ModelCallback nao existe @todo
+        // // Wire up model event callbacks even if request is not for admin.  Do this
+        // // after the usingAdmin call so that the callbacks run after models are
+        // // mutated by Decoy logic.  This is important, in particular, so the
+        // // Validation observer can alter validation rules before the onValidation
+        // // callback runs.
+        // $this->app['events']->listen(
+        //     'eloquent.*',
+        //     'Boravel\Observers\ModelCallbacks'
+        // );
+        // $this->app['events']->listen(
+        //     'facilitador::model.*',
+        //     'Boravel\Observers\ModelCallbacks'
+        // );
     }
 
     protected function getPublishesPath($path)

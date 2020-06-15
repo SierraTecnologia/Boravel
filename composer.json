@@ -34,7 +34,8 @@
         "ricardosierra/changelog": "~1.4",
         "ricardosierra/validate": "^0.2",
         "venturecraft/revisionable": ">=1.30",
-        "jeroennoten/laravel-adminlte": ">=1.24",
+        "jeroennoten/laravel-adminlte": "^3.0",
+        "thecodingmachine/discovery": "^1.2",
         "sierratecnologia/locaravel": "dev-master",
         "sierratecnologia/muleta": "dev-master",
         "sierratecnologia/tracking": "dev-master"
