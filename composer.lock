@@ -2938,16 +2938,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.15.0",
+            "version": "v7.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "739c44a3f7041430a3fb357f2dcfdb78f55005d7"
+                "reference": "f7041427f0f95b81ec1ce217c5212a325edad8cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/739c44a3f7041430a3fb357f2dcfdb78f55005d7",
-                "reference": "739c44a3f7041430a3fb357f2dcfdb78f55005d7",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f7041427f0f95b81ec1ce217c5212a325edad8cb",
+                "reference": "f7041427f0f95b81ec1ce217c5212a325edad8cb",
                 "shasum": ""
             },
             "require": {
@@ -3035,6 +3035,7 @@
             "suggest": {
                 "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage and SES mail driver (^3.0).",
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6).",
+                "ext-ftp": "Required to use the Flysystem FTP driver.",
                 "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
                 "ext-memcached": "Required to use the memcache cache driver.",
                 "ext-pcntl": "Required to use all features of the queue worker.",
@@ -3090,7 +3091,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-06-09T14:00:25+00:00"
+            "time": "2020-06-16T13:22:32+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -6260,7 +6261,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Translation",
-                "reference": "aedbb4e894782f201c0ce4a518f5d5bc92a98040"
+                "reference": "2e15d8848bf73be0a8ba24375ad9430cefdac8e5"
             },
             "archive": {
                 "exclude": [
@@ -6272,16 +6273,13 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "guzzlehttp/guzzle": "*",
-                "illuminate/database": "*",
-                "illuminate/support": "*",
-                "illuminate/validation": "*",
-                "php": ">=7.0.0"
+                "illuminate/database": "^5.8|^6.0|^7.0|^8.0",
+                "illuminate/support": "^5.8|^6.0|^7.0|^8.0",
+                "illuminate/validation": "^5.8|^6.0|^7.0|^8.0",
+                "php": ">=7.2"
             },
             "replace": {
-                "waavi/translation": "2.*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4|~5|~6|~7|~8"
+                "waavi/translation": "*"
             },
             "type": "library",
             "extra": {
@@ -6328,6 +6326,14 @@
                 }
             ],
             "description": "An easy automatic database driven translator for Laravel 5.*",
+            "keywords": [
+                "lang",
+                "laravel",
+                "localization",
+                "localize",
+                "translate",
+                "translation"
+            ],
             "transport-options": {
                 "symlink": true,
                 "relative": true
@@ -6538,7 +6544,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Audit",
-                "reference": "c08f28f7d1fdfb109389a7d67f5f6a34e6b14166"
+                "reference": "983d4fa76ef33da09da88c10b6d037f200deb297"
             },
             "require": {
                 "kassner/log-parser": "^2.0",
@@ -6743,13 +6749,6 @@
                 "ricardosierra/translation": "dev-master",
                 "sierratecnologia/crypto": "dev-master"
             },
-            "require-dev": {
-                "mikey179/vfsstream": ">=1.6",
-                "mockery/mockery": ">=0.9.4",
-                "orchestra/database": ">=3.4",
-                "orchestra/testbench": ">=3.4",
-                "phpunit/phpunit": ">=6.0"
-            },
             "type": "library",
             "extra": {
                 "laravel": {
@@ -6863,7 +6862,7 @@
             "dist": {
                 "type": "path",
                 "url": "../Tracking",
-                "reference": "ad15a7be45fca71941b4ba15331cb96bd3929a17"
+                "reference": "6c69a4086a7c1195738ca8add36527afb7735983"
             },
             "require": {
                 "geoip2/geoip2": "^2.0",
