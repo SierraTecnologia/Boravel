@@ -17,7 +17,7 @@ Route::get('/botman/tinker', 'BotManController@tinker');
 Route::post('/webhook/{user}', '\Boravel\Http\Controllers\WebhookReceivedController')->name('webhook');
 
 
-include dirname(__FILE__) . DIRECTORY_SEPARATOR . "web". DIRECTORY_SEPARATOR . "admin.php";
+// include dirname(__FILE__) . DIRECTORY_SEPARATOR . "web". DIRECTORY_SEPARATOR . "admin.php";
 include dirname(__FILE__) . DIRECTORY_SEPARATOR . "web". DIRECTORY_SEPARATOR . "recursos.php";
 include dirname(__FILE__) . DIRECTORY_SEPARATOR . "web". DIRECTORY_SEPARATOR . "features.php";
 
