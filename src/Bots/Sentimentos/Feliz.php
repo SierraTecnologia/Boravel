@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Logic\Bots\Sentimentos;
+namespace Boravel\Bots\Sentimentos;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

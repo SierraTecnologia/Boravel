@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Logic\Bots\Actions;
+namespace Boravel\Bots\Actions;
 
 class QuestionBot extends Bot
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Boravel\Logic\Bots\Personalidades;
+namespace Boravel\Bots\Personalidades;
 
-use Boravel\Logic\Bots\Bot;
+use Boravel\Bots\Bot;
 
 class Safado extends Bot
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Logic\Bots\Atuacoes;
+namespace Boravel\Bots\Atuacoes;
 
 class Vendedor
 {
