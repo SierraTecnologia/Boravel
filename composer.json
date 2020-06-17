@@ -37,7 +37,7 @@
         "jeroennoten/laravel-adminlte": "^3.0",
         "thecodingmachine/discovery": "^1.2",
         "sierratecnologia/locaravel": "dev-master",
-        "sierratecnologia/muleta": "dev-master",
+        "sierratecnologia/laravel-support": "dev-master",
         "sierratecnologia/tracking": "dev-master"
     },
     "suggest": {
