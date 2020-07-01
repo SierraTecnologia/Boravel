@@ -5,7 +5,7 @@ namespace Boravel\Repositories\Negocios;
 use Carbon\Carbon;
 use Boravel\Repositories\CmsRepository;
 use Boravel\Repositories\TranslationRepository;
-use App\Services\Midia\FileService;
+use Finder\Services\Midia\FileService;
 
 use Cms;
 use Config;

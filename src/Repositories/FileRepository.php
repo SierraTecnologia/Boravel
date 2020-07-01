@@ -7,7 +7,7 @@ use Config;
 use CryptoService;
 use Boravel\Models\Digital\Midia\File;
 use Boravel\Repositories\CmsRepository;
-use App\Services\Midia\FileService;
+use Finder\Services\Midia\FileService;
 use Illuminate\Support\Facades\Schema;
 
 class FileRepository extends CmsRepository

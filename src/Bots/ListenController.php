@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Logic;
+namespace Boravel\Bots;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

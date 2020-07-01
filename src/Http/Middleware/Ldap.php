@@ -1,4 +1,4 @@
-<?php namespace Boravel\Models\Access;
+<?php namespace Boravel\Http\Middleware;
 
 /**
  * Class Ldap

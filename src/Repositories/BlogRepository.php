@@ -7,7 +7,7 @@ use Cms;
 use App\Models\Blog\Blog;
 use Boravel\Repositories\CmsRepository;
 use Boravel\Repositories\TranslationRepository;
-use App\Services\Midia\FileService;
+use Finder\Services\Midia\FileService;
 
 class BlogRepository extends CmsRepository
 {

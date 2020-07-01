@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Logic\Conversations;
+namespace Boravel\Conversations;
 
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Question;

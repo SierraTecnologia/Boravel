@@ -3,7 +3,7 @@
 namespace Boravel\Repositories;
 
 use Carbon\Carbon;
-use App\Models\Calendar\Event;
+use Informate\Models\Event;
 use Boravel\Repositories\CmsRepository;
 use Boravel\Repositories\TranslationRepository;
 
@@ -63,7 +63,7 @@ class EventRepository extends CmsRepository
     {
         $payload['title'] = htmlentities($payload['title']);
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($event->id, 'App\Models\Calendar\Event', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate($event->id, 'Informate\Models\Event', $payload['lang'], $payload);
         } else {
             $payload['is_published'] = (isset($payload['is_published'])) ? (bool) $payload['is_published'] : 0;
             $payload['published_at'] = (isset($payload['published_at']) && !empty($payload['published_at'])) ? Carbon::parse($payload['published_at'])->format('Y-m-d H:i:s') : Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s');

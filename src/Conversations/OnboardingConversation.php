@@ -1,6 +1,6 @@
 <?php
 
-namespace Boravel\Logic\Conversations;
+namespace Boravel\Conversations;
 
 use Validator;
 use BotMan\BotMan\Messages\Incoming\Answer;

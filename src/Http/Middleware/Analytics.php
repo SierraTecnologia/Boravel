@@ -3,7 +3,7 @@
 namespace SiObject\Http\Middleware;
 
 use Closure;
-use Boravel\Services\System\AnalyticsService;
+use Tracking\Services\AnalyticsService;
 
 class Analytics
 {

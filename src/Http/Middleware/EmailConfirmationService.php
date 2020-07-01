@@ -1,4 +1,4 @@
-<?php namespace Boravel\Models\Access;
+<?php namespace Boravel\Http\Middleware;
 
 use App\Models\User;
 use Boravel\Models\UserRepo;
