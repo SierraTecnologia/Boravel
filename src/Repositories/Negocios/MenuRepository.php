@@ -2,7 +2,7 @@
 namespace Boravel\Repositories\Negocios;
 
 use Boravel\Repositories\CmsRepository as BaseRepository;
-use App\Models\Negocios\Menu;
+use Siravel\Models\Negocios\Menu;
 use Cache;
 use Illuminate\Support\Facades\Schema;
 

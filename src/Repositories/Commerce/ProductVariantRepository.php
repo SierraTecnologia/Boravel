@@ -2,8 +2,8 @@
 
 namespace Boravel\Repositories\Commerce;
 
-use App\Models\Commerce\Variant;
-use App\Models\Commerce\Product;
+use Siravel\Models\Commerce\Variant;
+use Siravel\Models\Commerce\Product;
 
 class ProductVariantRepository
 {
@@ -15,7 +15,7 @@ class ProductVariantRepository
     /**
      * Get all published products.
      *
-     * @return App\Models\Commerce\Variant
+     * @return Siravel\Models\Commerce\Variant
      */
     public function getProductVariants($id)
     {
@@ -25,10 +25,10 @@ class ProductVariantRepository
     /**
      * Adds variants to the product.
      *
-     * @param App\Models\Commerce\Product $products
+     * @param Siravel\Models\Commerce\Product $products
      * @param array                     $payload
      *
-     * @return App\Models\Commerce\Variant
+     * @return Siravel\Models\Commerce\Variant
      */
     public function addVariant($product, $payload)
     {
@@ -42,7 +42,7 @@ class ProductVariantRepository
      *
      * @param array $payload
      *
-     * @return App\Models\Commerce\Variant
+     * @return Siravel\Models\Commerce\Variant
      */
     public function saveVariant($payload)
     {

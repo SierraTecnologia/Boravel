@@ -3,7 +3,7 @@
 namespace Boravel\Repositories\Commerce;
 
 use Carbon\Carbon;
-use App\Models\Commerce\Favorite;
+use Siravel\Models\Commerce\Favorite;
 
 class FavoriteRepository
 {

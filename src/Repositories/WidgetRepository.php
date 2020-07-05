@@ -2,7 +2,7 @@
 
 namespace Boravel\Repositories;
 
-use App\Models\Negocios\Widget;
+use Siravel\Models\Negocios\Widget;
 use Boravel\Repositories\CmsRepository;
 use Boravel\Repositories\TranslationRepository;
 
@@ -48,7 +48,7 @@ class WidgetRepository extends CmsRepository
         $payload['name'] = htmlentities($payload['name']);
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($widget->id, 'App\Models\Negocios\Widget', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate($widget->id, 'Siravel\Models\Negocios\Widget', $payload['lang'], $payload);
         } else {
             unset($payload['lang']);
 

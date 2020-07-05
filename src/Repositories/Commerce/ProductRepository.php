@@ -2,7 +2,7 @@
 
 namespace Boravel\Repositories\Commerce;
 
-use App\Models\Commerce\Product;
+use Siravel\Models\Commerce\Product;
 use Boravel\Repositories\Commerce\FavoriteRepository;
 use Illuminate\Support\Facades\Schema;
 

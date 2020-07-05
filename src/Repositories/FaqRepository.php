@@ -3,7 +3,7 @@
 namespace Boravel\Repositories;
 
 use Carbon\Carbon;
-use App\Models\Negocios\Faq;
+use Siravel\Models\Negocios\Faq;
 use Boravel\Repositories\CmsRepository;
 
 class FaqRepository extends CmsRepository
@@ -50,7 +50,7 @@ class FaqRepository extends CmsRepository
         $payload['question'] = htmlentities($payload['question']);
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($item->id, 'App\Models\Negocios\Faq', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate($item->id, 'Siravel\Models\Negocios\Faq', $payload['lang'], $payload);
         } else {
             $payload['is_published'] = (isset($payload['is_published'])) ? (bool) $payload['is_published'] : 0;
             $payload['published_at'] = (isset($payload['published_at']) && !empty($payload['published_at'])) ? Carbon::parse($payload['published_at'])->format('Y-m-d H:i:s') : Carbon::now(config('app.timezone'))->format('Y-m-d H:i:s');

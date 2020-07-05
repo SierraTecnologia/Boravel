@@ -72,7 +72,7 @@ class MemberRepository extends BaseRepository
         $payload['external'] = isset($payload['external']) ? $payload['external'] : 0;
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($link->id, 'App\Models\Negocios\Member', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate($link->id, 'Siravel\Models\Negocios\Member', $payload['lang'], $payload);
         }
 
         unset($payload['lang']);

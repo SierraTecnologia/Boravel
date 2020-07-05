@@ -4,7 +4,7 @@ namespace Boravel\Repositories\Commerce;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Commerce\Transaction;
+use Siravel\Models\Commerce\Transaction;
 use App\Services\Commerce\LogisticService;
 
 class TransactionRepository

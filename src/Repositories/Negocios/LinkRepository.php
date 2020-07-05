@@ -5,7 +5,7 @@ namespace Boravel\Repositories\Negocios;
 use Cms;
 use Config;
 use CryptoService;
-use App\Models\Negocios\Link;
+use Siravel\Models\Negocios\Link;
 use Illuminate\Support\Facades\Schema;
 use Boravel\Repositories\CmsRepository as BaseRepository;
 use Boravel\Repositories\TranslationRepository;
@@ -84,7 +84,7 @@ class LinkRepository extends BaseRepository
         $payload['external'] = isset($payload['external']) ? $payload['external'] : 0;
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($link->id, 'App\Models\Negocios\Link', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate($link->id, 'Siravel\Models\Negocios\Link', $payload['lang'], $payload);
         }
 
         unset($payload['lang']);

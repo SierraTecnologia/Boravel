@@ -2,7 +2,7 @@
 
 namespace Boravel\Repositories;
 
-use App\Models\Negocios\Promotion;
+use Siravel\Models\Negocios\Promotion;
 use Boravel\Repositories\CmsRepository;
 use Boravel\Repositories\TranslationRepository;
 
@@ -48,7 +48,7 @@ class PromotionRepository extends CmsRepository
         $payload['slug'] = str_slug($payload['slug']);
 
         if (!empty($payload['lang']) && $payload['lang'] !== config('cms.default-language', 'en')) {
-            return $this->translationRepo->createOrUpdate($widget->id, 'App\Models\Negocios\Promotion', $payload['lang'], $payload);
+            return $this->translationRepo->createOrUpdate($widget->id, 'Siravel\Models\Negocios\Promotion', $payload['lang'], $payload);
         } else {
             unset($payload['lang']);
 
