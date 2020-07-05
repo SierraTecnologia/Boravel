@@ -5,7 +5,7 @@ namespace Boravel\Http\Controllers\Modules\Production;
 use Boravel\Http\Controllers\Controller;
 use App\Rpg;
 use App\RpgCategory;
-use Boravel\Models\System\Language;
+use RicardoSierra\Translation\Models\Language;
 use Illuminate\Support\Facades\Input;
 use SiObject\Http\Requests\Admin\RpgRequest;
 use Illuminate\Support\Facades\Auth;

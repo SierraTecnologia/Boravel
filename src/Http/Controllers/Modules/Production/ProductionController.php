@@ -4,7 +4,7 @@ namespace Boravel\Http\Controllers\Modules\Production;
 
 use Boravel\Http\Controllers\Controller;
 use App\Models\Production;
-use Boravel\Models\System\Language;
+use RicardoSierra\Translation\Models\Language;
 use Illuminate\Support\Facades\Input;
 use SiObject\Http\Requests\Admin\ProductionRequest;
 use Illuminate\Support\Facades\Auth;

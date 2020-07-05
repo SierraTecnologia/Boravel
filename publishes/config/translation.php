@@ -44,7 +44,7 @@ return [
         |
         */
 
-        'language' => Boravel\Models\System\Language::class,
+        'language' => RicardoSierra\Translation\Models\Language::class,
 
         /*
         |--------------------------------------------------------------------------

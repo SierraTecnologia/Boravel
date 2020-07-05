@@ -29,7 +29,7 @@ class HomeController extends Controller
 	 */
 	public function changeApplicationLanguage($code)
 	{
-		if($language = \Boravel\Models\System\Language::whereCode($code)->first())
+		if($language = \RicardoSierra\Translation\Models\Language::whereCode($code)->first())
 			event('language.change', $language);
 
 		return redirect(\URL::previous() ?: route('home'));
