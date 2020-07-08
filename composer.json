@@ -33,6 +33,8 @@
         "pusher/pusher-php-server": ">=3.4",
         "ricardosierra/changelog": "~1.4",
         "ricardosierra/validate": "^0.2",
+        "sierratecnologia/crypto": "dev-master",
+        "sierratecnologia/payment-laravel": "dev-master",
         "venturecraft/revisionable": ">=1.30",
         "jeroennoten/laravel-adminlte": "^3.0",
         "thecodingmachine/discovery": "^1.2",
