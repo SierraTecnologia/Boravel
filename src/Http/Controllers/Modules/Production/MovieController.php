@@ -5,7 +5,7 @@ namespace Boravel\Http\Controllers\Modules\Production;
 use Boravel\Http\Controllers\Controller;
 use App\Movie;
 use App\MovieCategory;
-use RicardoSierra\Translation\Models\Language;
+use Translation\Models\Language;
 use Illuminate\Support\Facades\Input;
 use SiObject\Http\Requests\Admin\MovieRequest;
 use Illuminate\Support\Facades\Auth;

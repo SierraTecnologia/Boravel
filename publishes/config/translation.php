@@ -44,7 +44,7 @@ return [
         |
         */
 
-        'language' => RicardoSierra\Translation\Models\Language::class,
+        'language' => Translation\Models\Language::class,
 
         /*
         |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
         |
         */
 
-        'translation' => RicardoSierra\Translation\Models\Translation::class,
+        'translation' => Translation\Models\Translation::class,
 
     ],
 
@@ -75,11 +75,11 @@ return [
         |--------------------------------------------------------------------------
         |
         |  The translation client providing translation service, must implement
-        |  RicardoSierra\Translation\Contracts\Client.
+        |  Translation\Contracts\Client.
         |
         */
 
-        'client' => RicardoSierra\Translation\Clients\GoogleTranslate::class,
+        'client' => Translation\Clients\GoogleTranslate::class,
 
         /*
         |--------------------------------------------------------------------------

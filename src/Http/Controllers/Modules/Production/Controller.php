@@ -5,7 +5,7 @@ namespace Boravel\Http\Controllers\Modules\Production;
 use Boravel\Http\Controllers\Controller as BaseController;
 use App\Article;
 use App\ArticleCategory;
-use RicardoSierra\Translation\Models\Language;
+use Translation\Models\Language;
 use Illuminate\Support\Facades\Input;
 use SiObject\Http\Requests\Admin\ArticleRequest;
 use Illuminate\Support\Facades\Auth;

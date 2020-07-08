@@ -44,8 +44,8 @@ class BoravelProvider extends ServiceProvider
     ];
 
     public static $aliasProviders = [
-        'TranslationCache' => \RicardoSierra\Translation\Facades\TranslationCache::class,
-        'Translation' => \RicardoSierra\Translation\Facades\Translation::class,
+        'TranslationCache' => \Translation\Facades\TranslationCache::class,
+        'Translation' => \Translation\Facades\Translation::class,
 
         // /**
         //  * Decoy
@@ -68,7 +68,7 @@ class BoravelProvider extends ServiceProvider
         /**
          * Base
          */
-        \RicardoSierra\Translation\TranslationServiceProvider::class,
+        \Translation\TranslationServiceProvider::class,
         
         
         /*

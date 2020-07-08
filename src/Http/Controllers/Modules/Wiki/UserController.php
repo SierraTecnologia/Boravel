@@ -54,7 +54,7 @@ class UserController extends ResourceController
 	protected function showForm($subtitle, $action, $method = 'POST')
 	{
 		view()->share([
-			'languages' => \RicardoSierra\Translation\Models\Language::orderBy('name')->withTrashed()->lists('name', 'id'),
+			'languages' => \Translation\Models\Language::orderBy('name')->withTrashed()->lists('name', 'id'),
 			'providers' => \App\Models\Provider::orderBy('name')->withTrashed()->lists('name', 'id'),
 			'role' => \App\Role::orderBy('name')->lists('name', 'id'),
 		]);
