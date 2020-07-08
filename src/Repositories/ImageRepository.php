@@ -7,7 +7,7 @@ use Config;
 use CryptoService;
 use Boravel\Models\Digital\Midia\Image;
 use App\Models\Tag;
-use Finder\Services\Midia\FileService;
+use Stalker\Services\Midia\FileService;
 use Illuminate\Support\Facades\Schema;
 
 class ImageRepository extends CmsRepository
