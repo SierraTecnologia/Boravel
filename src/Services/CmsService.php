@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 use Boravel\Facades\CryptoServiceFacade;
-use SiObjects\Support\Traits\Services\DefaultModuleServiceTrait;
-use SiObjects\Support\Traits\Services\LangServiceTrait;
-use SiObjects\Support\Traits\Services\MenuServiceTrait;
-use SiObjects\Support\Traits\Services\ModuleServiceTrait;
+use Siravel\Traits\Services\DefaultModuleServiceTrait;
+use Siravel\Traits\Services\LangServiceTrait;
+use Siravel\Traits\Services\MenuServiceTrait;
+use Siravel\Traits\Services\ModuleServiceTrait;
 
 class CmsService
 {
