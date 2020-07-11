@@ -34,13 +34,15 @@
         "ricardosierra/changelog": "~1.4",
         "ricardosierra/validate": "^0.2",
         "sierratecnologia/crypto": "dev-master",
+        "sierratecnologia/boravel": "dev-master",
+        "sierratecnologia/siravel": "dev-master",
         "sierratecnologia/payment-laravel": "dev-master",
-        "venturecraft/revisionable": ">=1.30",
-        "jeroennoten/laravel-adminlte": "^3.0",
-        "thecodingmachine/discovery": "^1.2",
         "sierratecnologia/locaravel": "dev-master",
         "sierratecnologia/laravel-support": "dev-master",
-        "sierratecnologia/tracking": "dev-master"
+        "sierratecnologia/tracking": "dev-master",
+        "venturecraft/revisionable": ">=1.30",
+        "jeroennoten/laravel-adminlte": "^3.0",
+        "thecodingmachine/discovery": "^1.2"
     },
     "suggest": {
         "sierratecnologia/payment-laravel": "Pagamento"
