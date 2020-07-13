@@ -17,7 +17,7 @@ use BotMan\Studio\Providers\DriverServiceProvider as ServiceProvider;
 use BotMan\Tinker\TinkerServiceProvider;
 use BotMan\BotMan\BotManServiceProvider;
 use BotMan\Studio\Providers\StudioServiceProvider;
-use Boravel\Services\Boravel;
+use Boravel\Boravel;
 use Boravel\Services\BoravelService;
 
 use BotMan\BotMan\Drivers\DriverManager;
@@ -33,6 +33,7 @@ class BoravelProvider extends ServiceProvider
 {
     use ConsoleTools;
 
+    
     /**
      * The drivers that should be loaded to
      * use with BotMan
@@ -103,6 +104,13 @@ class BoravelProvider extends ServiceProvider
          * Services Providers
          */
         \Yajra\DataTables\DataTablesServiceProvider::class,
+    ];
+
+    /**
+     * Rotas do Menu
+     */
+    public static $menuItens = [
+
     ];
 
     /**

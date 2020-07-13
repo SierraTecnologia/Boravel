@@ -39,7 +39,6 @@
         "sierratecnologia/laravel-support": "dev-master",
         "sierratecnologia/tracking": "dev-master",
         "venturecraft/revisionable": ">=1.30",
-        "jeroennoten/laravel-adminlte": "^3.0",
         "thecodingmachine/discovery": "^1.2"
     },
     "suggest": {
