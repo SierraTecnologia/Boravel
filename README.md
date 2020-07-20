@@ -2,11 +2,11 @@
 
 **Boravel** - An e-siravel package for Laravel apps using SierraTecnologia CMS
 
-[![Build Status](https://travis-ci.org/SierraTecnologiaInc/Boravel.svg?branch=master)](https://travis-ci.org/SierraTecnologiaInc/Boravel)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f28b73ebf600f2db7f48/maintainability)](https://codeclimate.com/github/SierraTecnologiaInc/Boravel/maintainability)
+[![Build Status](https://travis-ci.org/SierraTecnologia/Boravel.svg?branch=master)](https://travis-ci.org/SierraTecnologia/Boravel)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f28b73ebf600f2db7f48/maintainability)](https://codeclimate.com/github/SierraTecnologia/Boravel/maintainability)
 [![Packagist](https://img.shields.io/packagist/dt/sierratecnologia/siravel.svg?maxAge=2592000)](https://packagist.org/packages/sierratecnologia/siravel)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://packagist.org/packages/sierratecnologia/siravel)
-[![Join the chat at https://gitter.im/SierraTecnologiaInc/CMS](https://badges.gitter.im/SierraTecnologiaInc/CMS.svg)](https://gitter.im/SierraTecnologiaInc/CMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/SierraTecnologia/CMS](https://badges.gitter.im/SierraTecnologia/CMS.svg)](https://gitter.im/SierraTecnologia/CMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Boravel is a e-siravel package for SierraTecnologia CMS. It is an elegant solution for adding an e-siravel platform to your SierraTecnologia CMS instance. This means it can be added to existing apps, or fresh installs and setups of the SierraTecnologia CMS.
 You can control: products, subscriptions, transaction history, orders, and some year by year analytics. Utilizing the power of SierraTecnologia, you can spin up a store, where you can offer subscriptions, digital products for download, or even physical products for order shipments. Integrate any external services to handle shipping rates, and tracking number updates. Take control of the many things you make, and build the store you've always wanted.

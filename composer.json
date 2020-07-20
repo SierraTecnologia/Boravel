@@ -1,17 +1,31 @@
 {
     "name": "sierratecnologia/boravel",
     "description": "Recursos para Desenvolvimento Complexo",
-    "license": "MIT",
+    "type": "library",
     "keywords": [
+        "sierratecnologia",
+        "boravel",
         "botman",
         "chatbot",
-        "socrates",
         "laravel"
     ],
+    "license": "MIT",
+    "homepage": "https://sierratecnologia.com/packages/borave/",
+    "support": {
+        "email": "help@sierratecnologia.com.br",
+        "issues": "https://github.com/sierratecnologia/borave/issues",
+        "source": "https://github.com/sierratecnologia/borave",
+        "docs": "https://github.com/sierratecnologia/borave/blob/master/README.md"
+    },
     "authors": [
         {
+            "name": "SierraTecnologia",
+            "homepage": "https://sierratecnologia.com.br",
+            "email": "help@sierratecnologia.com.br"
+        },
+        {
             "name": "Ricardo Rebello Sierra",
-            "email": "ricardo@sierratecnologia.com.br"
+            "email": "contato@ricardosierra.com.br"
         }
     ],
     "require": {
