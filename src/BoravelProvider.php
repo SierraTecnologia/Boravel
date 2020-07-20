@@ -33,6 +33,8 @@ class BoravelProvider extends ServiceProvider
 {
     use ConsoleTools;
 
+
+    const pathVendor = 'sierratecnologia/boravel';
     
     /**
      * The drivers that should be loaded to
