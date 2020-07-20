@@ -2,7 +2,7 @@
 
 namespace Boravel\Http\Controllers;
 
-use Boravel\Models\User;
+use App\Models\User;
 use BotMan\BotMan\BotMan;
 
 class PaymentsController extends Controller
