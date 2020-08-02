@@ -11,7 +11,7 @@ abstract class Request extends FormRequest
 	 * Validation rules that apply to the request.
 	 * @var array
 	 */
-	protected $rules = [];
+	public $rules = [];
 
 	/**
 	 * Human friendly names of the request fields under validation.

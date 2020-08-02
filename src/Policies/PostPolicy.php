@@ -2,7 +2,7 @@
 
 namespace Boravel\Policies;
 
-use App\User;
+use App\Models\User;
 use App\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -13,7 +13,7 @@ class PostPolicy
     /**
      * Determine whether the user can view the post.
      *
-     * @param  \App\User $user
+     * @param  \App\Models\User $user
      * @param  \App\Post $post
      * @return mixed
      */
@@ -40,7 +40,7 @@ class PostPolicy
     /**
      * Determine whether the user can create posts.
      *
-     * @param  \App\User $user
+     * @param  \App\Models\User $user
      * @return mixed
      */
     public function create(User $user)
@@ -53,7 +53,7 @@ class PostPolicy
     /**
      * Determine whether the user can update the post.
      *
-     * @param  \App\User $user
+     * @param  \App\Models\User $user
      * @param  \App\Post $post
      * @return mixed
      */
@@ -71,7 +71,7 @@ class PostPolicy
     /**
      * Determine whether the user can delete the post.
      *
-     * @param  \App\User $user
+     * @param  \App\Models\User $user
      * @param  \App\Post $post
      * @return mixed
      */
