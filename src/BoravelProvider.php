@@ -54,7 +54,7 @@ class BoravelProvider extends ServiceProvider
         //  * Decoy
         //  */
         // 'Boravel' => \Facilitador\Facades\Facilitador::class,
-        // 'BoravelURL' => \Facilitador\Facades\FacilitadorURL::class,
+        // 'BoravelURL' => \Facilitador\Facades\SupportURL::class,
 
         // // Image resizing
         // 'Croppa' => \Bkwld\Croppa\Facade::class,
