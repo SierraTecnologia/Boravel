@@ -14,8 +14,8 @@ class CreateTagsTable extends Migration
 	{
 		Schema::create(config('app.db-prefix', '').'tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->json('name');
-            $table->json('slug');
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
             $table->string('type')->nullable();
             $table->integer('order_column')->nullable();
             $table->timestamps();

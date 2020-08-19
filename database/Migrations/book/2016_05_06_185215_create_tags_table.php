@@ -12,19 +12,21 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+		Schema::create(config('app.db-prefix', '').'tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('entity_id');
-            $table->string('entity_type', 100);
-            $table->string('name');
-            $table->string('value');
-            $table->integer('order');
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('type')->nullable();
+            $table->integer('order_column')->nullable();
             $table->timestamps();
+        });
 
-            $table->index('name');
-            $table->index('value');
-            $table->index('order');
-            $table->index(['entity_id', 'entity_type']);
+        Schema::create(config('app.db-prefix', '').'taggables', function (Blueprint $table) {
+            $table->integer('tag_id')->unsigned();
+            $table->integer('taggable_id')->unsigned();
+            $table->string('taggable_type');
+
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 
