@@ -13996,7 +13996,7 @@
             "dist": {
                 "type": "path",
                 "url": "../entrust",
-                "reference": "edd6b8a1135acd8ab82b9b21f63271ce7e1576fd"
+                "reference": "2eb7b31145610ae047c1215ca174ccb5f0a75108"
             },
             "require": {
                 "illuminate/cache": "~5.0|^6.0|^7.0|^8.0",
