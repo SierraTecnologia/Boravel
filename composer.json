@@ -29,7 +29,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": "^7.4",
         "botman/botman": "~2.6",
         "botman/driver-web": "~1.5",
         "botman/driver-slack": "~2.2",
