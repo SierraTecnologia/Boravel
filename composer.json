@@ -30,29 +30,14 @@
     ],
     "require": {
         "php": "^7.4",
-        "botman/botman": "~2.6",
-        "botman/driver-web": "~1.5",
-        "botman/driver-slack": "~2.2",
-        "ricardosierra/driver-discord": ">=1.0.7",
-        "botman/driver-twitter": ">=1.0",
-        "botman/driver-telegram": "^1.5",
-        "botman/driver-facebook": ">=1.10",
-        "botman/studio-addons": "dev-master",
-        "botman/tinker": ">=1.2",
-        "fideloper/proxy": ">=4.3",
-        "laravel/framework": "5.*|6.*|7.*|8.*",
-        "laravel/tinker": ">=2.0",
-        "clue/stdio-react": ">=2.3",
-        "mpociot/slack-client": ">=1.2",
-        "pusher/pusher-php-server": ">=3.4",
-        "ricardosierra/changelog": "~1.4",
-        "ricardosierra/validate": "^0.2",
+        "guzzlehttp/guzzle": "^7.0",
+        "privatejustice/socrates": "dev-master",
         "sierratecnologia/crypto": "dev-master",
+        "sierratecnologia/muleta": "dev-master",
         "sierratecnologia/integrations": "dev-master",
         "sierratecnologia/transmissor": "dev-master",
         "sierratecnologia/locaravel": "dev-master",
-        "sierratecnologia/laravel-support": "dev-master",
-        "thecodingmachine/discovery": "^1.2"
+        "sierratecnologia/laravel-support": "dev-master"
     },
     "suggest": {
         "sierratecnologia/payment-laravel": "Pagamento"
@@ -74,10 +59,6 @@
             "options": {
                 "symlink": true
             }
-        },
-        {
-            "type": "vcs",
-            "url":  "git@github.com:botman/studio-addons.git"
         }
     ],
     "minimum-stability": "dev",
