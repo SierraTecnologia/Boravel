@@ -34,6 +34,6 @@ class AddEmailConfirmationTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('email_confirmed');
         });
-        Schema::drop('email_confirmations');
+        Schema::dropIfExists('email_confirmations');
     }
 }

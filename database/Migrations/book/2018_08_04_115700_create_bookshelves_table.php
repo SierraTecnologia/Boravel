@@ -28,11 +28,11 @@ class CreateBookshelvesTable extends Migration
         // Here we have table drops before the creations due to upgrade issues
         // people were having due to the bookshelves_books table creation failing.
         if (Schema::hasTable('bookshelves_books')) {
-            Schema::drop('bookshelves_books');
+            Schema::dropIfExists('bookshelves_books');
         }
 
         if (Schema::hasTable('bookshelves')) {
-            Schema::drop('bookshelves');
+            Schema::dropIfExists('bookshelves');
         }
 
         Schema::create('bookshelves', function (Blueprint $table) {

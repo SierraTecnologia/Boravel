@@ -183,7 +183,7 @@ class CreateFeaturesProductionsTables extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('production_variables');
+		Schema::dropIfExists('production_variables');
 	}
 
 }

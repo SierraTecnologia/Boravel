@@ -30,6 +30,6 @@ class CreateChaptersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('chapters');
+        Schema::dropIfExists('chapters');
     }
 }

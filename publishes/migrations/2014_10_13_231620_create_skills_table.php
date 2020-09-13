@@ -48,8 +48,8 @@ class CreateSkillsTable extends Migration
 	 */
 	public function down()
 	{
-        Schema::drop('skillables');
-        Schema::drop('skills');
+        Schema::dropIfExists('skillables');
+        Schema::dropIfExists('skills');
 	}
 
 }

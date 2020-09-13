@@ -83,7 +83,7 @@ class CreateJointPermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('joint_permissions');
+        Schema::dropIfExists('joint_permissions');
 
         Schema::rename('role_permissions', 'permissions');
         Schema::rename('entity_permissions', 'restrictions');

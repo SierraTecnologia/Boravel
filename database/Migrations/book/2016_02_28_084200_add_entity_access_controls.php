@@ -68,6 +68,6 @@ class AddEntityAccessControls extends Migration
             $table->dropColumn('restricted');
         });
 
-        Schema::drop('restrictions');
+        Schema::dropIfExists('restrictions');
     }
 }

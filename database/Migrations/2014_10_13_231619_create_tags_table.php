@@ -38,8 +38,8 @@ class CreateTagsTable extends Migration
 	 */
 	public function down()
 	{
-        Schema::drop('taggables');
-        Schema::drop('tags');
+        Schema::dropIfExists('taggables');
+        Schema::dropIfExists('tags');
 	}
 
 }

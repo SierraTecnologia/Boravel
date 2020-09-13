@@ -70,9 +70,9 @@ class CreateFeaturesGamificationsTables extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('pointables');
-		Schema::drop('points');
-		Schema::drop('point_types');
+		Schema::dropIfExists('pointables');
+		Schema::dropIfExists('points');
+		Schema::dropIfExists('point_types');
 	}
 
 }

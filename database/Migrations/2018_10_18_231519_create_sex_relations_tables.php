@@ -77,7 +77,7 @@ class CreateSexRelationsTables extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('identity_slaves');
+		Schema::dropIfExists('identity_slaves');
 	}
 
 }
