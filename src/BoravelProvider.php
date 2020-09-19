@@ -279,7 +279,7 @@ class BoravelProvider extends ServiceProvider
     {
         $this->app['events']->listen(
             BuildingMenu::class, function (BuildingMenu $event) {
-                (new \Support\Template\Mounters\SystemMount())->loadMenuForAdminlte($event);
+                (new \Pedreiro\Template\Mounters\SystemMount())->loadMenuForAdminlte($event);
             }
         );
 
