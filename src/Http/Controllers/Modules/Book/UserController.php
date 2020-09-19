@@ -15,6 +15,7 @@ class UserController extends Controller
 
     /**
      * UserController constructor.
+     *
      * @param User     $user
      * @param UserRepo $userRepo
      */
@@ -27,7 +28,8 @@ class UserController extends Controller
 
     /**
      * Display a listing of the users.
-     * @param Request $request
+     *
+     * @param  Request $request
      * @return Response
      */
     public function index(Request $request)
@@ -46,6 +48,7 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new user.
+     *
      * @return Response
      */
     public function create()
@@ -58,6 +61,7 @@ class UserController extends Controller
 
     /**
      * Store a newly created user in storage.
+     *
      * @param  Request $request
      * @return Response
      * @throws UserUpdateException
@@ -101,15 +105,18 @@ class UserController extends Controller
 
     /**
      * Show the form for editing the specified user.
-     * @param  int              $id
-     * @param \App\Models\Access\SocialAuthService $socialAuthService
+     *
+     * @param  int                                  $id
+     * @param  \App\Models\Access\SocialAuthService $socialAuthService
      * @return Response
      */
     public function edit($id, SocialAuthService $socialAuthService)
     {
-        $this->checkPermissionOr('users-manage', function () use ($id) {
-            return $this->currentUser->id == $id;
-        });
+        $this->checkPermissionOr(
+            'users-manage', function () use ($id) {
+                return $this->currentUser->id == $id;
+            }
+        );
 
         $user = $this->user->findOrFail($id);
 
@@ -123,25 +130,30 @@ class UserController extends Controller
 
     /**
      * Update the specified user in storage.
+     *
      * @param  Request $request
-     * @param  int $id
+     * @param  int     $id
      * @return Response
      * @throws UserUpdateException
      */
     public function update(Request $request, $id)
     {
         $this->preventAccessForDemoUsers();
-        $this->checkPermissionOr('users-manage', function () use ($id) {
-            return $this->currentUser->id == $id;
-        });
+        $this->checkPermissionOr(
+            'users-manage', function () use ($id) {
+                return $this->currentUser->id == $id;
+            }
+        );
 
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'name'             => 'min:2',
             'email'            => 'min:2|email|unique:users,email,' . $id,
             'password'         => 'min:5|required_with:password_confirm',
             'password-confirm' => 'same:password|required_with:password',
             'setting'          => 'array'
-        ]);
+            ]
+        );
 
         $user = $this->userRepo->getById($id);
         $user->fill($request->all());
@@ -179,14 +191,17 @@ class UserController extends Controller
 
     /**
      * Show the user delete page.
-     * @param int $id
+     *
+     * @param  int $id
      * @return \Illuminate\View\View
      */
     public function delete($id)
     {
-        $this->checkPermissionOr('users-manage', function () use ($id) {
-            return $this->currentUser->id == $id;
-        });
+        $this->checkPermissionOr(
+            'users-manage', function () use ($id) {
+                return $this->currentUser->id == $id;
+            }
+        );
 
         $user = $this->userRepo->getById($id);
         $this->setPageTitle(trans('settings.users_delete_named', ['userName' => $user->name]));
@@ -195,6 +210,7 @@ class UserController extends Controller
 
     /**
      * Remove the specified user from storage.
+     *
      * @param  int $id
      * @return Response
      * @throws \Exception
@@ -202,9 +218,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         $this->preventAccessForDemoUsers();
-        $this->checkPermissionOr('users-manage', function () use ($id) {
-            return $this->currentUser->id == $id;
-        });
+        $this->checkPermissionOr(
+            'users-manage', function () use ($id) {
+                return $this->currentUser->id == $id;
+            }
+        );
 
         $user = $this->userRepo->getById($id);
 
@@ -226,7 +244,8 @@ class UserController extends Controller
 
     /**
      * Show the user profile page
-     * @param $id
+     *
+     * @param  $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showProfilePage($id)
@@ -235,25 +254,30 @@ class UserController extends Controller
         $userActivity = $this->userRepo->getActivity($user);
         $recentlyCreated = $this->userRepo->getRecentlyCreated($user, 5, 0);
         $assetCounts = $this->userRepo->getAssetCounts($user);
-        return view('users/profile', [
+        return view(
+            'users/profile', [
             'user' => $user,
             'activity' => $userActivity,
             'recentlyCreated' => $recentlyCreated,
             'assetCounts' => $assetCounts
-        ]);
+            ]
+        );
     }
 
     /**
      * Update the user's preferred book-list display setting.
-     * @param $id
-     * @param Request $request
+     *
+     * @param  $id
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function switchBookView($id, Request $request)
     {
-        $this->checkPermissionOr('users-manage', function () use ($id) {
-            return $this->currentUser->id == $id;
-        });
+        $this->checkPermissionOr(
+            'users-manage', function () use ($id) {
+                return $this->currentUser->id == $id;
+            }
+        );
 
         $viewType = $request->get('view_type');
         if (!in_array($viewType, ['grid', 'list'])) {
@@ -268,15 +292,18 @@ class UserController extends Controller
 
     /**
      * Update the user's preferred shelf-list display setting.
-     * @param $id
-     * @param Request $request
+     *
+     * @param  $id
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function switchShelfView($id, Request $request)
     {
-        $this->checkPermissionOr('users-manage', function () use ($id) {
-            return $this->currentUser->id == $id;
-        });
+        $this->checkPermissionOr(
+            'users-manage', function () use ($id) {
+                return $this->currentUser->id == $id;
+            }
+        );
 
         $viewType = $request->get('view_type');
         if (!in_array($viewType, ['grid', 'list'])) {

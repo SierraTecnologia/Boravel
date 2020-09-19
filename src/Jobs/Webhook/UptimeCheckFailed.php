@@ -17,10 +17,14 @@ class UptimeCheckFailed implements ShouldQueue
 
     public $payload;
 
-    /** @var \BotMan\BotMan\BotMan */
+    /**
+     * @var \BotMan\BotMan\BotMan 
+     */
     public $botman;
 
-    /** @var \Boravel\Models\User */
+    /**
+     * @var \Boravel\Models\User 
+     */
     public $user;
 
     public function __construct($payload, User $user)

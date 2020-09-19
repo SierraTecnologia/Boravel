@@ -18,8 +18,9 @@ class BookController extends Controller
 
     /**
      * BookController constructor.
-     * @param EntityRepo $entityRepo
-     * @param \App\Models\UserRepo $userRepo
+     *
+     * @param EntityRepo                                $entityRepo
+     * @param \App\Models\UserRepo                      $userRepo
      * @param \App\Models\Components\Book\ExportService $exportService
      */
     public function __construct(EntityRepo $entityRepo, UserRepo $userRepo, ExportService $exportService)
@@ -32,6 +33,7 @@ class BookController extends Controller
 
     /**
      * Display a listing of the book.
+     *
      * @return Response
      */
     public function index()
@@ -42,17 +44,20 @@ class BookController extends Controller
         $new = $this->entityRepo->getRecentlyCreated('book', 4, 0);
         $booksViewType = setting()->getUser($this->currentUser, 'books_view_type', config('app.views.books', 'list'));
         $this->setPageTitle(trans('entities.books'));
-        return view('books/index', [
+        return view(
+            'books/index', [
             'books' => $books,
             'recents' => $recents,
             'popular' => $popular,
             'new' => $new,
             'booksViewType' => $booksViewType
-        ]);
+            ]
+        );
     }
 
     /**
      * Show the form for creating a new book.
+     *
      * @return Response
      */
     public function create()
@@ -71,10 +76,12 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $this->checkPermission('book-create-all');
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'name' => 'required|string|max:255',
             'description' => 'string|max:1000'
-        ]);
+            ]
+        );
         $book = $this->entityRepo->createFromInput('book', $request->all());
         Activity::add($book, 'book_create', $book->id);
         return redirect($book->getUrl());
@@ -82,7 +89,8 @@ class BookController extends Controller
 
     /**
      * Display the specified book.
-     * @param $slug
+     *
+     * @param  $slug
      * @return Response
      */
     public function show($slug)
@@ -92,17 +100,20 @@ class BookController extends Controller
         $bookChildren = $this->entityRepo->getBookChildren($book);
         Views::add($book);
         $this->setPageTitle($book->getShortName());
-        return view('books/show', [
+        return view(
+            'books/show', [
             'book' => $book,
             'current' => $book,
             'bookChildren' => $bookChildren,
             'activity' => Activity::entityActivity($book, 20, 0)
-        ]);
+            ]
+        );
     }
 
     /**
      * Show the form for editing the specified book.
-     * @param $slug
+     *
+     * @param  $slug
      * @return Response
      */
     public function edit($slug)
@@ -115,18 +126,21 @@ class BookController extends Controller
 
     /**
      * Update the specified book in storage.
+     *
      * @param  Request $request
-     * @param          $slug
+     * @param  $slug
      * @return Response
      */
     public function update(Request $request, $slug)
     {
         $book = $this->entityRepo->getBySlug('book', $slug);
         $this->checkOwnablePermission('book-update', $book);
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'name' => 'required|string|max:255',
             'description' => 'string|max:1000'
-        ]);
+            ]
+        );
          $book = $this->entityRepo->updateFromInput('book', $book, $request->all());
          Activity::add($book, 'book_update', $book->id);
          return redirect($book->getUrl());
@@ -134,7 +148,8 @@ class BookController extends Controller
 
     /**
      * Shows the page to confirm deletion
-     * @param $bookSlug
+     *
+     * @param  $bookSlug
      * @return \Illuminate\View\View
      */
     public function showDelete($bookSlug)
@@ -147,7 +162,8 @@ class BookController extends Controller
 
     /**
      * Shows the view which allows pages to be re-ordered and sorted.
-     * @param string $bookSlug
+     *
+     * @param  string $bookSlug
      * @return \Illuminate\View\View
      */
     public function sort($bookSlug)
@@ -163,7 +179,8 @@ class BookController extends Controller
     /**
      * Shows the sort box for a single book.
      * Used via AJAX when loading in extra books to a sort.
-     * @param $bookSlug
+     *
+     * @param  $bookSlug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getSortItem($bookSlug)
@@ -175,8 +192,9 @@ class BookController extends Controller
 
     /**
      * Saves an array of sort mapping to pages and chapters.
-     * @param  string $bookSlug
-     * @param Request $request
+     *
+     * @param  string  $bookSlug
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function saveSort($bookSlug, Request $request)
@@ -194,13 +212,15 @@ class BookController extends Controller
         $bookIdsInvolved = collect([$book->id]);
 
         // Load models into map
-        $sortMap->each(function ($mapItem) use ($bookIdsInvolved) {
-            $mapItem->type = ($mapItem->type === 'page' ? 'page' : 'chapter');
-            $mapItem->model = $this->entityRepo->getById($mapItem->type, $mapItem->id);
-            // Store source and target books
-            $bookIdsInvolved->push(intval($mapItem->model->book_id));
-            $bookIdsInvolved->push(intval($mapItem->book));
-        });
+        $sortMap->each(
+            function ($mapItem) use ($bookIdsInvolved) {
+                $mapItem->type = ($mapItem->type === 'page' ? 'page' : 'chapter');
+                $mapItem->model = $this->entityRepo->getById($mapItem->type, $mapItem->id);
+                // Store source and target books
+                $bookIdsInvolved->push(intval($mapItem->model->book_id));
+                $bookIdsInvolved->push(intval($mapItem->book));
+            }
+        );
 
         // Get the books involved in the sort
         $bookIdsInvolved = $bookIdsInvolved->unique()->toArray();
@@ -210,43 +230,50 @@ class BookController extends Controller
             $this->showPermissionError();
         }
         // Check permissions of involved books
-        $booksInvolved->each(function (Book $book) {
-             $this->checkOwnablePermission('book-update', $book);
-        });
+        $booksInvolved->each(
+            function (Book $book) {
+                $this->checkOwnablePermission('book-update', $book);
+            }
+        );
 
         // Perform the sort
-        $sortMap->each(function ($mapItem) {
-            $model = $mapItem->model;
+        $sortMap->each(
+            function ($mapItem) {
+                $model = $mapItem->model;
 
-            $priorityChanged = intval($model->priority) !== intval($mapItem->sort);
-            $bookChanged = intval($model->book_id) !== intval($mapItem->book);
-            $chapterChanged = ($mapItem->type === 'page') && intval($model->chapter_id) !== $mapItem->parentChapter;
+                $priorityChanged = intval($model->priority) !== intval($mapItem->sort);
+                $bookChanged = intval($model->book_id) !== intval($mapItem->book);
+                $chapterChanged = ($mapItem->type === 'page') && intval($model->chapter_id) !== $mapItem->parentChapter;
 
-            if ($bookChanged) {
-                $this->entityRepo->changeBook($mapItem->type, $mapItem->book, $model);
+                if ($bookChanged) {
+                    $this->entityRepo->changeBook($mapItem->type, $mapItem->book, $model);
+                }
+                if ($chapterChanged) {
+                    $model->chapter_id = intval($mapItem->parentChapter);
+                    $model->save();
+                }
+                if ($priorityChanged) {
+                    $model->priority = intval($mapItem->sort);
+                    $model->save();
+                }
             }
-            if ($chapterChanged) {
-                $model->chapter_id = intval($mapItem->parentChapter);
-                $model->save();
-            }
-            if ($priorityChanged) {
-                $model->priority = intval($mapItem->sort);
-                $model->save();
-            }
-        });
+        );
 
         // Rebuild permissions and add activity for involved books.
-        $booksInvolved->each(function (Book $book) {
-            $this->entityRepo->buildJointPermissionsForBook($book);
-            Activity::add($book, 'book_sort', $book->id);
-        });
+        $booksInvolved->each(
+            function (Book $book) {
+                $this->entityRepo->buildJointPermissionsForBook($book);
+                Activity::add($book, 'book_sort', $book->id);
+            }
+        );
 
         return redirect($book->getUrl());
     }
 
     /**
      * Remove the specified book from storage.
-     * @param $bookSlug
+     *
+     * @param  $bookSlug
      * @return Response
      */
     public function destroy($bookSlug)
@@ -260,7 +287,8 @@ class BookController extends Controller
 
     /**
      * Show the Restrictions view.
-     * @param $bookSlug
+     *
+     * @param  $bookSlug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showRestrict($bookSlug)
@@ -268,17 +296,20 @@ class BookController extends Controller
         $book = $this->entityRepo->getBySlug('book', $bookSlug);
         $this->checkOwnablePermission('restrictions-manage', $book);
         $roles = $this->userRepo->getRestrictableRoles();
-        return view('books/restrictions', [
+        return view(
+            'books/restrictions', [
             'book' => $book,
             'roles' => $roles
-        ]);
+            ]
+        );
     }
 
     /**
      * Set the restrictions for this book.
-     * @param $bookSlug
-     * @param $bookSlug
-     * @param Request $request
+     *
+     * @param  $bookSlug
+     * @param  $bookSlug
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function restrict($bookSlug, Request $request)
@@ -292,7 +323,8 @@ class BookController extends Controller
 
     /**
      * Export a book as a PDF file.
-     * @param string $bookSlug
+     *
+     * @param  string $bookSlug
      * @return mixed
      */
     public function exportPdf($bookSlug)
@@ -304,7 +336,8 @@ class BookController extends Controller
 
     /**
      * Export a book as a contained HTML file.
-     * @param string $bookSlug
+     *
+     * @param  string $bookSlug
      * @return mixed
      */
     public function exportHtml($bookSlug)
@@ -316,7 +349,8 @@ class BookController extends Controller
 
     /**
      * Export a book as a plain text file.
-     * @param $bookSlug
+     *
+     * @param  $bookSlug
      * @return mixed
      */
     public function exportPlainText($bookSlug)

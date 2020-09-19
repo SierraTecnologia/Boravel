@@ -48,7 +48,7 @@ class RegisterController extends Controller
      *
      * @param \App\Models\Access\SocialAuthService $socialAuthService
      * @param \App\Models\EmailConfirmationService $emailConfirmationService
-     * @param \App\Models\UserRepo $userRepo
+     * @param \App\Models\UserRepo                 $userRepo
      */
     public function __construct(\App\Models\Access\SocialAuthService $socialAuthService, \App\Models\Access\EmailConfirmationService $emailConfirmationService, UserRepo $userRepo)
     {
@@ -69,15 +69,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return Validator::make(
+            $data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
-        ]);
+            ]
+        );
     }
 
     /**
      * Check whether or not registrations are allowed in the app settings.
+     *
      * @throws UserRegistrationException
      */
     protected function checkRegistrationAllowed()
@@ -89,6 +92,7 @@ class RegisterController extends Controller
 
     /**
      * Show the application registration form.
+     *
      * @return Response
      * @throws UserRegistrationException
      */
@@ -101,7 +105,8 @@ class RegisterController extends Controller
 
     /**
      * Handle a registration request for the application.
-     * @param Request|\Illuminate\Http\Request $request
+     *
+     * @param  Request|\Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws UserRegistrationException
      */
@@ -116,23 +121,27 @@ class RegisterController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
-     * @param  array  $data
+     *
+     * @param  array $data
      * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::create(
+            [
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+            ]
+        );
     }
 
     /**
      * The registrations flow for all users.
-     * @param array $userData
-     * @param bool|false|SocialAccount $socialAccount
-     * @param bool $emailVerified
+     *
+     * @param  array                    $userData
+     * @param  bool|false|SocialAccount $socialAccount
+     * @param  bool                     $emailVerified
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws UserRegistrationException
      */
@@ -181,7 +190,8 @@ class RegisterController extends Controller
 
     /**
      * Confirms an email via a token and logs the user into the system.
-     * @param $token
+     *
+     * @param  $token
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws UserRegistrationException
      */
@@ -200,6 +210,7 @@ class RegisterController extends Controller
     /**
      * Shows a notice that a user's email address has not been confirmed,
      * Also has the option to re-send the confirmation email.
+     *
      * @return \Illuminate\View\View
      */
     public function showAwaitingConfirmation()
@@ -209,14 +220,17 @@ class RegisterController extends Controller
 
     /**
      * Resend the confirmation email
-     * @param Request $request
+     *
+     * @param  Request $request
      * @return \Illuminate\View\View
      */
     public function resendConfirmation(Request $request)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'email' => 'required|email|exists:users,email'
-        ]);
+            ]
+        );
         $user = $this->userRepo->getByEmail($request->get('email'));
 
         try {
@@ -232,7 +246,8 @@ class RegisterController extends Controller
 
     /**
      * Redirect to the social site for authentication intended to register.
-     * @param $socialDriver
+     *
+     * @param  $socialDriver
      * @return mixed
      * @throws UserRegistrationException
      * @throws \SiUtils\Exceptions\SocialDriverNotConfigured
@@ -246,8 +261,9 @@ class RegisterController extends Controller
 
     /**
      * The callback for social login services.
-     * @param $socialDriver
-     * @param Request $request
+     *
+     * @param  $socialDriver
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws SocialSignInException
      * @throws UserRegistrationException
@@ -261,10 +277,14 @@ class RegisterController extends Controller
 
         // Check request for error information
         if ($request->has('error') && $request->has('error_description')) {
-            throw new SocialSignInException(trans('errors.social_login_bad_response', [
-                'socialAccount' => $socialDriver,
-                'error' => $request->get('error_description'),
-            ]), '/login');
+            throw new SocialSignInException(
+                trans(
+                    'errors.social_login_bad_response', [
+                    'socialAccount' => $socialDriver,
+                    'error' => $request->get('error_description'),
+                    ]
+                ), '/login'
+            );
         }
 
         $action = session()->pull('social-callback');
@@ -291,7 +311,8 @@ class RegisterController extends Controller
 
     /**
      * Detach a social account from a user.
-     * @param $socialDriver
+     *
+     * @param  $socialDriver
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function detachSocialAccount($socialDriver)
@@ -301,8 +322,9 @@ class RegisterController extends Controller
 
     /**
      * Register a new user after a registration callback.
-     * @param string $socialDriver
-     * @param SocialUser $socialUser
+     *
+     * @param  string     $socialDriver
+     * @param  SocialUser $socialUser
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws UserRegistrationException
      */

@@ -17,8 +17,9 @@ class ChapterController extends Controller
 
     /**
      * ChapterController constructor.
-     * @param EntityRepo $entityRepo
-     * @param UserRepo $userRepo
+     *
+     * @param EntityRepo                                $entityRepo
+     * @param UserRepo                                  $userRepo
      * @param \App\Models\Components\Book\ExportService $exportService
      */
     public function __construct(EntityRepo $entityRepo, UserRepo $userRepo, ExportService $exportService)
@@ -31,7 +32,8 @@ class ChapterController extends Controller
 
     /**
      * Show the form for creating a new chapter.
-     * @param $bookSlug
+     *
+     * @param  $bookSlug
      * @return Response
      */
     public function create($bookSlug)
@@ -44,15 +46,18 @@ class ChapterController extends Controller
 
     /**
      * Store a newly created chapter in storage.
-     * @param          $bookSlug
+     *
+     * @param  $bookSlug
      * @param  Request $request
      * @return Response
      */
     public function store($bookSlug, Request $request)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'name' => 'required|string|max:255'
-        ]);
+            ]
+        );
 
         $book = $this->entityRepo->getBySlug('book', $bookSlug);
         $this->checkOwnablePermission('chapter-create', $book);
@@ -66,8 +71,9 @@ class ChapterController extends Controller
 
     /**
      * Display the specified chapter.
-     * @param $bookSlug
-     * @param $chapterSlug
+     *
+     * @param  $bookSlug
+     * @param  $chapterSlug
      * @return Response
      */
     public function show($bookSlug, $chapterSlug)
@@ -78,19 +84,22 @@ class ChapterController extends Controller
         Views::add($chapter);
         $this->setPageTitle($chapter->getShortName());
         $pages = $this->entityRepo->getChapterChildren($chapter);
-        return view('chapters/show', [
+        return view(
+            'chapters/show', [
             'book' => $chapter->book,
             'chapter' => $chapter,
             'current' => $chapter,
             'sidebarTree' => $sidebarTree,
             'pages' => $pages
-        ]);
+            ]
+        );
     }
 
     /**
      * Show the form for editing the specified chapter.
-     * @param $bookSlug
-     * @param $chapterSlug
+     *
+     * @param  $bookSlug
+     * @param  $chapterSlug
      * @return Response
      */
     public function edit($bookSlug, $chapterSlug)
@@ -103,9 +112,10 @@ class ChapterController extends Controller
 
     /**
      * Update the specified chapter in storage.
+     *
      * @param  Request $request
-     * @param          $bookSlug
-     * @param          $chapterSlug
+     * @param  $bookSlug
+     * @param  $chapterSlug
      * @return Response
      * @throws \SiUtils\Exceptions\NotFoundException
      */
@@ -121,8 +131,9 @@ class ChapterController extends Controller
 
     /**
      * Shows the page to confirm deletion of this chapter.
-     * @param $bookSlug
-     * @param $chapterSlug
+     *
+     * @param  $bookSlug
+     * @param  $chapterSlug
      * @return \Illuminate\View\View
      */
     public function showDelete($bookSlug, $chapterSlug)
@@ -135,8 +146,9 @@ class ChapterController extends Controller
 
     /**
      * Remove the specified chapter from storage.
-     * @param $bookSlug
-     * @param $chapterSlug
+     *
+     * @param  $bookSlug
+     * @param  $chapterSlug
      * @return Response
      */
     public function destroy($bookSlug, $chapterSlug)
@@ -151,8 +163,9 @@ class ChapterController extends Controller
 
     /**
      * Show the page for moving a chapter.
-     * @param $bookSlug
-     * @param $chapterSlug
+     *
+     * @param  $bookSlug
+     * @param  $chapterSlug
      * @return mixed
      * @throws \SiUtils\Exceptions\NotFoundException
      */
@@ -162,17 +175,20 @@ class ChapterController extends Controller
         $this->setPageTitle(trans('entities.chapters_move_named', ['chapterName' => $chapter->getShortName()]));
         $this->checkOwnablePermission('chapter-update', $chapter);
         $this->checkOwnablePermission('chapter-delete', $chapter);
-        return view('chapters/move', [
+        return view(
+            'chapters/move', [
             'chapter' => $chapter,
             'book' => $chapter->book
-        ]);
+            ]
+        );
     }
 
     /**
      * Perform the move action for a chapter.
-     * @param $bookSlug
-     * @param $chapterSlug
-     * @param Request $request
+     *
+     * @param  $bookSlug
+     * @param  $chapterSlug
+     * @param  Request $request
      * @return mixed
      * @throws \SiUtils\Exceptions\NotFoundException
      */
@@ -211,8 +227,9 @@ class ChapterController extends Controller
 
     /**
      * Show the Restrictions view.
-     * @param $bookSlug
-     * @param $chapterSlug
+     *
+     * @param  $bookSlug
+     * @param  $chapterSlug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showRestrict($bookSlug, $chapterSlug)
@@ -220,17 +237,20 @@ class ChapterController extends Controller
         $chapter = $this->entityRepo->getBySlug('chapter', $chapterSlug, $bookSlug);
         $this->checkOwnablePermission('restrictions-manage', $chapter);
         $roles = $this->userRepo->getRestrictableRoles();
-        return view('chapters/restrictions', [
+        return view(
+            'chapters/restrictions', [
             'chapter' => $chapter,
             'roles' => $roles
-        ]);
+            ]
+        );
     }
 
     /**
      * Set the restrictions for this chapter.
-     * @param $bookSlug
-     * @param $chapterSlug
-     * @param Request $request
+     *
+     * @param  $bookSlug
+     * @param  $chapterSlug
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function restrict($bookSlug, $chapterSlug, Request $request)
@@ -244,8 +264,9 @@ class ChapterController extends Controller
 
     /**
      * Exports a chapter to pdf .
-     * @param string $bookSlug
-     * @param string $chapterSlug
+     *
+     * @param  string $bookSlug
+     * @param  string $chapterSlug
      * @return \Illuminate\Http\Response
      */
     public function exportPdf($bookSlug, $chapterSlug)
@@ -257,8 +278,9 @@ class ChapterController extends Controller
 
     /**
      * Export a chapter to a self-contained HTML file.
-     * @param string $bookSlug
-     * @param string $chapterSlug
+     *
+     * @param  string $bookSlug
+     * @param  string $chapterSlug
      * @return \Illuminate\Http\Response
      */
     public function exportHtml($bookSlug, $chapterSlug)
@@ -270,8 +292,9 @@ class ChapterController extends Controller
 
     /**
      * Export a chapter to a simple plaintext .txt file.
-     * @param string $bookSlug
-     * @param string $chapterSlug
+     *
+     * @param  string $bookSlug
+     * @param  string $chapterSlug
      * @return \Illuminate\Http\Response
      */
     public function exportPlainText($bookSlug, $chapterSlug)

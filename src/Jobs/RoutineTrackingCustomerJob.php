@@ -27,7 +27,8 @@ class RoutineTrackingUserDeviseJob implements ShouldQueue
         $this->customer = $customer;
         $this->trackingType = $trackingType;
         $this->trackingData = $trackingData;
-        if (!$timestamp) $timestamp = time();
+        if (!$timestamp) { $timestamp = time();
+        }
         $this->timestamp = $timestamp;
         $this->ip = $ip;
     }

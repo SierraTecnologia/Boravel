@@ -44,7 +44,8 @@ class RoutineOrganizerCreateJob implements ShouldQueue
             return false;
         }
 
-        DB::table('users')->firstOrCreate([
+        DB::table('users')->firstOrCreate(
+            [
             'name'              => $organizerResult['name'],
             'cpf'               => $organizerResult['cpf'],
             'email'             => $organizerResult['email'],
@@ -52,7 +53,8 @@ class RoutineOrganizerCreateJob implements ShouldQueue
             'token'             => \SiUtils\Helper\General::generateToken(),
             'token_public'      => $this->companyToken,
             'role_id'           => Role::$CLIENT
-        ]);
+            ]
+        );
 
         return true;
     }

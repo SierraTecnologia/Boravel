@@ -30,7 +30,7 @@ class CorsHeaders
     /**
      * CorsHeaders constructor.
      *
-     * @param Config $config
+     * @param Config          $config
      * @param ResponseFactory $responseFactory
      */
     public function __construct(Config $config, ResponseFactory $responseFactory)
@@ -42,8 +42,8 @@ class CorsHeaders
     /**
      * Handle an incoming request.
      *
-     * @param Request $request
-     * @param Closure $next
+     * @param  Request $request
+     * @param  Closure $next
      * @return Response
      */
     public function handle($request, Closure $next)
@@ -74,7 +74,7 @@ class CorsHeaders
     /**
      * Determine if the origin value is allowed.
      *
-     * @param string|null $origin
+     * @param  string|null $origin
      * @return bool
      */
     private function isAllowedOrigin(?string $origin): bool
@@ -93,17 +93,19 @@ class CorsHeaders
     /**
      * Add the CORS headers to the response.
      *
-     * @param Request $request
-     * @param Response $response
+     * @param  Request  $request
+     * @param  Response $response
      * @return void
      */
     private function addCorsHeaders($request, $response): void
     {
-        $response->headers->add([
+        $response->headers->add(
+            [
             'access-control-allow-origin' => $request->header('origin'),
             'access-control-allow-methods' => $this->config->get('cors.headers.access-control-allow-methods'),
             'access-control-allow-headers' => $this->config->get('cors.headers.access-control-allow-headers'),
             'access-control-allow-credentials' => $this->config->get('cors.headers.access-control-allow-credentials'),
-        ]);
+            ]
+        );
     }
 }

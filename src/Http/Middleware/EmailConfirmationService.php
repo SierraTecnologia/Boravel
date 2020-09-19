@@ -15,7 +15,8 @@ class EmailConfirmationService
 
     /**
      * EmailConfirmationService constructor.
-     * @param Database $db
+     *
+     * @param Database             $db
      * @param \App\Models\UserRepo $users
      */
     public function __construct(Database $db, UserRepo $users)
@@ -27,7 +28,8 @@ class EmailConfirmationService
     /**
      * Create new confirmation for a user,
      * Also removes any existing old ones.
-     * @param \App\Models\User $user
+     *
+     * @param  \App\Models\User $user
      * @throws ConfirmationEmailException
      */
     public function sendConfirmation(User $user)
@@ -44,25 +46,29 @@ class EmailConfirmationService
 
     /**
      * Creates a new email confirmation in the database and returns the token.
-     * @param User $user
+     *
+     * @param  User $user
      * @return string
      */
     public function createEmailConfirmation(User $user)
     {
         $token = $this->getToken();
-        $this->db->table('email_confirmations')->insert([
+        $this->db->table('email_confirmations')->insert(
+            [
             'user_id' => $user->id,
             'token' => $token,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ]);
+            ]
+        );
         return $token;
     }
 
     /**
      * Gets an email confirmation by looking up the token,
      * Ensures the token has not expired.
-     * @param string $token
+     *
+     * @param  string $token
      * @return array|null|\stdClass
      * @throws UserRegistrationException
      */
@@ -88,7 +94,8 @@ class EmailConfirmationService
 
     /**
      * Delete all email confirmations that belong to a user.
-     * @param \App\Models\User $user
+     *
+     * @param  \App\Models\User $user
      * @return mixed
      */
     public function deleteConfirmationsByUser(User $user)
@@ -98,6 +105,7 @@ class EmailConfirmationService
 
     /**
      * Creates a unique token within the email confirmation database.
+     *
      * @return string
      */
     protected function getToken()

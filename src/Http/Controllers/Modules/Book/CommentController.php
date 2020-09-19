@@ -13,8 +13,9 @@ class CommentController extends Controller
 
     /**
      * CommentController constructor.
+     *
      * @param \App\Models\Components\Book\Repos\EntityRepo $entityRepo
-     * @param \App\Actions\Book\CommentRepo $commentRepo
+     * @param \App\Actions\Book\CommentRepo                $commentRepo
      */
     public function __construct(EntityRepo $entityRepo, CommentRepo $commentRepo)
     {
@@ -25,17 +26,20 @@ class CommentController extends Controller
 
     /**
      * Save a new comment for a Page
-     * @param Request $request
-     * @param integer $pageId
-     * @param null|integer $commentId
+     *
+     * @param  Request      $request
+     * @param  integer      $pageId
+     * @param  null|integer $commentId
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function savePageComment(Request $request, $pageId, $commentId = null)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'text' => 'required|string',
             'html' => 'required|string',
-        ]);
+            ]
+        );
 
         try {
             $page = $this->entityRepo->getById('page', $pageId, true);
@@ -59,16 +63,19 @@ class CommentController extends Controller
 
     /**
      * Update an existing comment.
-     * @param Request $request
-     * @param integer $commentId
+     *
+     * @param  Request $request
+     * @param  integer $commentId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function update(Request $request, $commentId)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'text' => 'required|string',
             'html' => 'required|string',
-        ]);
+            ]
+        );
 
         $comment = $this->commentRepo->getById($commentId);
         $this->checkOwnablePermission('page-view', $comment->entity);
@@ -80,7 +87,8 @@ class CommentController extends Controller
 
     /**
      * Delete a comment from the system.
-     * @param integer $id
+     *
+     * @param  integer $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)

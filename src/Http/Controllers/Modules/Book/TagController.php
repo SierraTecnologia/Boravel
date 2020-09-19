@@ -10,6 +10,7 @@ class TagController extends Controller
 
     /**
      * TagController constructor.
+     *
      * @param $tagRepo
      */
     public function __construct(TagRepo $tagRepo)
@@ -20,8 +21,9 @@ class TagController extends Controller
 
     /**
      * Get all the Tags for a particular entity
-     * @param $entityType
-     * @param $entityId
+     *
+     * @param  $entityType
+     * @param  $entityId
      * @return \Illuminate\Http\JsonResponse
      */
     public function getForEntity($entityType, $entityId)
@@ -32,7 +34,8 @@ class TagController extends Controller
 
     /**
      * Get tag name suggestions from a given search term.
-     * @param Request $request
+     *
+     * @param  Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function getNameSuggestions(Request $request)
@@ -44,7 +47,8 @@ class TagController extends Controller
 
     /**
      * Get tag value suggestions from a given search term.
-     * @param Request $request
+     *
+     * @param  Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function getValueSuggestions(Request $request)

@@ -39,7 +39,7 @@ class NotifyOrderChangeJob implements ShouldQueue
 
         // Avisa Servidor da alteração no status
         Organizer::getOrganizerServiceForUser(
-                $this->order->user, $this->order->companyToken
-            )->foundOrganizerDataByToken();
+            $this->order->user, $this->order->companyToken
+        )->foundOrganizerDataByToken();
     }
 }

@@ -8,7 +8,8 @@ use SiObject\Http\Requests\Admin\ArticleRequest;
 use Illuminate\Support\Facades\Auth;
 use Datatables;
 
-class CalendarController extends Controller {
+class CalendarController extends Controller
+{
 
     public function __construct()
     {

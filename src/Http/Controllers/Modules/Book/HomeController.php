@@ -11,6 +11,7 @@ class HomeController extends Controller
 
     /**
      * HomeController constructor.
+     *
      * @param EntityRepo $entityRepo
      */
     public function __construct(EntityRepo $entityRepo)
@@ -22,6 +23,7 @@ class HomeController extends Controller
 
     /**
      * Display the homepage.
+     *
      * @return Response
      */
     public function index()
@@ -72,6 +74,7 @@ class HomeController extends Controller
 
     /**
      * Get a js representation of the current translations
+     *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
@@ -94,13 +97,16 @@ class HomeController extends Controller
             cache()->put($cacheKey, $resp, 120);
         }
 
-        return response($resp, 200, [
+        return response(
+            $resp, 200, [
             'Content-Type' => 'application/javascript'
-        ]);
+            ]
+        );
     }
 
     /**
      * Get custom head HTML, Used in ajax calls to show in editor.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function customHeadContent()
@@ -110,6 +116,7 @@ class HomeController extends Controller
 
     /**
      * Show the view for /robots.txt
+     *
      * @return $this
      */
     public function getRobots()

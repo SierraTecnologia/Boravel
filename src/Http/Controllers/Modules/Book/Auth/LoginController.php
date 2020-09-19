@@ -44,8 +44,8 @@ class LoginController extends Controller
      * Create a new controller instance.
      *
      * @param \App\Models\\App\Models\Access\SocialAuthService $socialAuthService
-     * @param LdapService $ldapService
-     * @param \App\Models\UserRepo $userRepo
+     * @param LdapService                                      $ldapService
+     * @param \App\Models\UserRepo                             $userRepo
      */
     public function __construct(SocialAuthService $socialAuthService, LdapService $ldapService, UserRepo $userRepo)
     {
@@ -66,8 +66,9 @@ class LoginController extends Controller
     /**
      * Overrides the action when a user is authenticated.
      * If the user authenticated but does not exist in the user table we create them.
-     * @param Request $request
-     * @param Authenticatable $user
+     *
+     * @param  Request         $request
+     * @param  Authenticatable $user
      * @return \Illuminate\Http\RedirectResponse
      * @throws AuthException
      * @throws \SiUtils\Exceptions\LdapException
@@ -113,7 +114,8 @@ class LoginController extends Controller
 
     /**
      * Show the application login form.
-     * @param Request $request
+     *
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
     public function getLogin(Request $request)
@@ -122,10 +124,12 @@ class LoginController extends Controller
         $authMethod = config('auth.method');
 
         if ($request->has('email')) {
-            session()->flashInput([
+            session()->flashInput(
+                [
                 'email' => $request->get('email'),
                 'password' => (config('app.env') === 'demo') ? $request->get('password', '') : ''
-            ]);
+                ]
+            );
         }
 
         return view('auth/login', ['socialDrivers' => $socialDrivers, 'authMethod' => $authMethod]);
@@ -133,7 +137,8 @@ class LoginController extends Controller
 
     /**
      * Redirect to the relevant social site.
-     * @param $socialDriver
+     *
+     * @param  $socialDriver
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \SiUtils\Exceptions\SocialDriverNotConfigured
      */

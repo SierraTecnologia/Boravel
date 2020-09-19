@@ -8,7 +8,8 @@ use SiObject\Http\Requests\Admin\ArticleRequest;
 use Illuminate\Support\Facades\Auth;
 use Datatables;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
     public function __construct()
     {

@@ -21,9 +21,10 @@ class SocialAuthService
 
     /**
      * SocialAuthService constructor.
-     * @param \App\Models\UserRepo      $userRepo
-     * @param Socialite     $socialite
-     * @param SocialAccount $socialAccount
+     *
+     * @param \App\Models\UserRepo $userRepo
+     * @param Socialite            $socialite
+     * @param SocialAccount        $socialAccount
      */
     public function __construct(UserRepo $userRepo, Socialite $socialite, SocialAccount $socialAccount)
     {
@@ -35,7 +36,8 @@ class SocialAuthService
 
     /**
      * Start the social login path.
-     * @param string $socialDriver
+     *
+     * @param  string $socialDriver
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws SocialDriverNotConfigured
      */
@@ -47,7 +49,8 @@ class SocialAuthService
 
     /**
      * Start the social registration process
-     * @param string $socialDriver
+     *
+     * @param  string $socialDriver
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws SocialDriverNotConfigured
      */
@@ -59,8 +62,9 @@ class SocialAuthService
 
     /**
      * Handle the social registration process on callback.
-     * @param string $socialDriver
-     * @param SocialUser $socialUser
+     *
+     * @param  string     $socialDriver
+     * @param  SocialUser $socialUser
      * @return SocialUser
      * @throws UserRegistrationException
      */
@@ -81,7 +85,8 @@ class SocialAuthService
 
     /**
      * Get the social user details via the social driver.
-     * @param string $socialDriver
+     *
+     * @param  string $socialDriver
      * @return SocialUser
      * @throws SocialDriverNotConfigured
      */
@@ -93,8 +98,9 @@ class SocialAuthService
 
     /**
      * Handle the login process on a oAuth callback.
-     * @param $socialDriver
-     * @param SocialUser $socialUser
+     *
+     * @param  $socialDriver
+     * @param  SocialUser $socialUser
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws SocialSignInAccountNotUsed
      */
@@ -147,7 +153,7 @@ class SocialAuthService
     /**
      * Ensure the social driver is correct and supported.
      *
-     * @param $socialDriver
+     * @param  $socialDriver
      * @return string
      * @throws SocialDriverNotConfigured
      */
@@ -167,7 +173,8 @@ class SocialAuthService
 
     /**
      * Check a social driver has been configured correctly.
-     * @param $driver
+     *
+     * @param  $driver
      * @return bool
      */
     private function checkDriverConfigured($driver)
@@ -180,6 +187,7 @@ class SocialAuthService
 
     /**
      * Gets the names of the active social drivers.
+     *
      * @return array
      */
     public function getActiveDrivers()
@@ -195,7 +203,8 @@ class SocialAuthService
 
     /**
      * Get the presentational name for a driver.
-     * @param $driver
+     *
+     * @param  $driver
      * @return mixed
      */
     public function getDriverName($driver)
@@ -205,7 +214,8 @@ class SocialAuthService
 
     /**
      * Check if the current config for the given driver allows auto-registration.
-     * @param string $driver
+     *
+     * @param  string $driver
      * @return bool
      */
     public function driverAutoRegisterEnabled(string $driver)
@@ -215,7 +225,8 @@ class SocialAuthService
 
     /**
      * Check if the current config for the given driver allow email address auto-confirmation.
-     * @param string $driver
+     *
+     * @param  string $driver
      * @return bool
      */
     public function driverAutoConfirmEmailEnabled(string $driver)
@@ -224,23 +235,26 @@ class SocialAuthService
     }
 
     /**
-     * @param string $socialDriver
-     * @param SocialUser $socialUser
+     * @param  string     $socialDriver
+     * @param  SocialUser $socialUser
      * @return SocialAccount
      */
     public function fillSocialAccount($socialDriver, $socialUser)
     {
-        $this->socialAccount->fill([
+        $this->socialAccount->fill(
+            [
             'driver'    => $socialDriver,
             'driver_id' => $socialUser->getId(),
             'avatar'    => $socialUser->getAvatar()
-        ]);
+            ]
+        );
         return $this->socialAccount;
     }
 
     /**
      * Detach a social account from a user.
-     * @param $socialDriver
+     *
+     * @param  $socialDriver
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function detachSocialAccount($socialDriver)
@@ -252,7 +266,8 @@ class SocialAuthService
 
     /**
      * Provide redirect options per service for the Laravel Socialite driver
-     * @param $driverName
+     *
+     * @param  $driverName
      * @return \Laravel\Socialite\Contracts\Provider
      */
     public function getSocialDriver(string $driverName)

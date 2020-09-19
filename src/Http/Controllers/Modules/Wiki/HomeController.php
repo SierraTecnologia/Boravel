@@ -4,34 +4,35 @@ namespace Boravel\Http\Controllers\Modules\Wiki;
 
 class HomeController extends Controller
 {
-	/**
-	 * Show home page.
-	 * If the user is already logged in, show categories, otherwise show README.
-	 *
-	 * @return Response
-	 */
-	public function showHomePage()
-	{
-		if(auth()->check()) {
-			return redirect(route('category.index'));
+    /**
+     * Show home page.
+     * If the user is already logged in, show categories, otherwise show README.
+     *
+     * @return Response
+     */
+    public function showHomePage()
+    {
+        if(auth()->check()) {
+            return redirect(route('category.index'));
         }
         
-		$readme = markup(\File::get(base_path('readme.md')));
+        $readme = markup(\File::get(base_path('readme.md')));
 
-		return view('wiki.home')->withTitle(_('Home'))->withContent($readme);
-	}
+        return view('wiki.home')->withTitle(_('Home'))->withContent($readme);
+    }
 
-	/**
-	 * Change the application language.
-	 *
-	 * @param  string
-	 * @return Response
-	 */
-	public function changeApplicationLanguage($code)
-	{
-		if($language = \Translation\Models\Language::whereCode($code)->first())
-			event('language.change', $language);
+    /**
+     * Change the application language.
+     *
+     * @param  string
+     * @return Response
+     */
+    public function changeApplicationLanguage($code)
+    {
+        if($language = \Translation\Models\Language::whereCode($code)->first()) {
+            event('language.change', $language);
+        }
 
-		return redirect(\URL::previous() ?: route('home'));
-	}
+        return redirect(\URL::previous() ?: route('home'));
+    }
 }

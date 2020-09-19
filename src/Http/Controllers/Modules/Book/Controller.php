@@ -28,21 +28,23 @@ abstract class Controller extends BaseController
      */
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
+        $this->middleware(
+            function ($request, $next) {
 
-            // Get a user instance for the current user
-            $user = user();
+                // Get a user instance for the current user
+                $user = user();
 
-            // Share variables with controllers
-            $this->currentUser = $user;
-            $this->signedIn = auth()->check();
+                // Share variables with controllers
+                $this->currentUser = $user;
+                $this->signedIn = auth()->check();
 
-            // Share variables with views
-            view()->share('signedIn', $this->signedIn);
-            view()->share('currentUser', $user);
+                // Share variables with views
+                view()->share('signedIn', $this->signedIn);
+                view()->share('currentUser', $user);
 
-            return $next($request);
-        });
+                return $next($request);
+            }
+        );
     }
 
     /**
@@ -58,6 +60,7 @@ abstract class Controller extends BaseController
 
     /**
      * Adds the page title into the view.
+     *
      * @param $title
      */
     public function setPageTitle($title)
@@ -83,7 +86,8 @@ abstract class Controller extends BaseController
 
     /**
      * Checks for a permission.
-     * @param string $permissionName
+     *
+     * @param  string $permissionName
      * @return bool|\Illuminate\Http\RedirectResponse
      */
     protected function checkPermission($permissionName)
@@ -96,8 +100,9 @@ abstract class Controller extends BaseController
 
     /**
      * Check the current user's permissions against an ownable item.
-     * @param $permission
-     * @param Ownable $ownable
+     *
+     * @param  $permission
+     * @param  Ownable $ownable
      * @return bool
      */
     protected function checkOwnablePermission($permission, Ownable $ownable)
@@ -110,8 +115,9 @@ abstract class Controller extends BaseController
 
     /**
      * Check if a user has a permission or bypass if the callback is true.
-     * @param $permissionName
-     * @param $callback
+     *
+     * @param  $permissionName
+     * @param  $callback
      * @return bool
      */
     protected function checkPermissionOr($permissionName, $callback)
@@ -125,8 +131,9 @@ abstract class Controller extends BaseController
 
     /**
      * Send back a json error message.
-     * @param string $messageText
-     * @param int $statusCode
+     *
+     * @param  string $messageText
+     * @param  int    $statusCode
      * @return mixed
      */
     protected function jsonError($messageText = "", $statusCode = 500)
@@ -136,8 +143,9 @@ abstract class Controller extends BaseController
 
     /**
      * Create the response for when a request fails validation.
-     * @param  \Illuminate\Http\Request  $request
-     * @param  array  $errors
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  array                    $errors
      * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function buildFailedValidationResponse(Request $request, array $errors)
@@ -153,15 +161,18 @@ abstract class Controller extends BaseController
 
     /**
      * Create a response that forces a download in the browser.
-     * @param string $content
-     * @param string $fileName
+     *
+     * @param  string $content
+     * @param  string $fileName
      * @return \Illuminate\Http\Response
      */
     protected function downloadResponse(string $content, string $fileName)
     {
-        return response()->make($content, 200, [
+        return response()->make(
+            $content, 200, [
             'Content-Type'        => 'application/octet-stream',
             'Content-Disposition' => 'attachment; filename="' . $fileName . '"'
-        ]);
+            ]
+        );
     }
 }

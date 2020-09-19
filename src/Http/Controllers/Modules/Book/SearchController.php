@@ -13,9 +13,10 @@ class SearchController extends Controller
 
     /**
      * SearchController constructor.
+     *
      * @param \App\Models\Components\Book\Repos\EntityRepo $entityRepo
-     * @param ViewService $viewService
-     * @param SearchService $searchService
+     * @param ViewService                                  $viewService
+     * @param SearchService                                $searchService
      */
     public function __construct(EntityRepo $entityRepo, ViewService $viewService, SearchService $searchService)
     {
@@ -27,8 +28,9 @@ class SearchController extends Controller
 
     /**
      * Searches all entities.
-     * @param Request $request
-     * @return \Illuminate\View\View
+     *
+     * @param    Request $request
+     * @return   \Illuminate\View\View
      * @internal param string $searchTerm
      */
     public function search(Request $request)
@@ -41,21 +43,24 @@ class SearchController extends Controller
 
         $results = $this->searchService->searchEntities($searchTerm, 'all', $page, 20);
 
-        return view('search/all', [
+        return view(
+            'search/all', [
             'entities'   => $results['results'],
             'totalResults' => $results['total'],
             'searchTerm' => $searchTerm,
             'hasNextPage' => $results['has_more'],
             'nextPageLink' => $nextPageLink
-        ]);
+            ]
+        );
     }
 
 
     /**
      * Searches all entities within a book.
-     * @param Request $request
-     * @param integer $bookId
-     * @return \Illuminate\View\View
+     *
+     * @param    Request $request
+     * @param    integer $bookId
+     * @return   \Illuminate\View\View
      * @internal param string $searchTerm
      */
     public function searchBook(Request $request, $bookId)
@@ -67,9 +72,10 @@ class SearchController extends Controller
 
     /**
      * Searches all entities within a chapter.
-     * @param Request $request
-     * @param integer $chapterId
-     * @return \Illuminate\View\View
+     *
+     * @param    Request $request
+     * @param    integer $chapterId
+     * @return   \Illuminate\View\View
      * @internal param string $searchTerm
      */
     public function searchChapter(Request $request, $chapterId)
@@ -82,7 +88,8 @@ class SearchController extends Controller
     /**
      * Search for a list of entities and return a partial HTML response of matching entities.
      * Returns the most popular entities if no search is provided.
-     * @param Request $request
+     *
+     * @param  Request $request
      * @return mixed
      */
     public function searchEntitiesAjax(Request $request)
@@ -96,9 +103,11 @@ class SearchController extends Controller
             $searchTerm .= ' {type:'. implode('|', $entityTypes->toArray()) .'}';
             $entities = $this->searchService->searchEntities($searchTerm, 'all', 1, 20, $permission)['results'];
         } else {
-            $entityNames = $entityTypes->map(function ($type) {
-                return 'App\\' . ucfirst($type); // TODO - Extract this elsewhere, too specific and stringy
-            })->toArray();
+            $entityNames = $entityTypes->map(
+                function ($type) {
+                    return 'App\\' . ucfirst($type); // TODO - Extract this elsewhere, too specific and stringy
+                }
+            )->toArray();
             $entities = $this->viewService->getPopular(20, 0, $entityNames, $permission);
         }
 

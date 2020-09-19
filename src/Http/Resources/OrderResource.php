@@ -37,19 +37,19 @@ class OrderResource extends JsonResource
     {
         // @todo Descobrir todos os códigos
 
-        if ($statusCode == Order::$STATUS_APPROVED){
+        if ($statusCode == Order::$STATUS_APPROVED) {
             return 'approved';
         }
 
-        if ($statusCode == '6'){
+        if ($statusCode == '6') {
             return 'review';
         }
 
-        if ($statusCode == '7'){
+        if ($statusCode == '7') {
             return 'declined';
         }
 
-        if ($statusCode == '8'){
+        if ($statusCode == '8') {
             return 'nao sei o nome'; // @todo Descobrir nome do Status
         }
 

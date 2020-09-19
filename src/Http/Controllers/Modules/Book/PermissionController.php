@@ -11,6 +11,7 @@ class PermissionController extends Controller
 
     /**
      * PermissionController constructor.
+     *
      * @param \App\Models\Permissions\PermissionsRepo $permissionsRepo
      */
     public function __construct(PermissionsRepo $permissionsRepo)
@@ -31,6 +32,7 @@ class PermissionController extends Controller
 
     /**
      * Show the form to create a new role
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function createRole()
@@ -41,16 +43,19 @@ class PermissionController extends Controller
 
     /**
      * Store a new role in the system.
-     * @param Request $request
+     *
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function storeRole(Request $request)
     {
         $this->checkPermission('user-roles-manage');
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'display_name' => 'required|min:3|max:200',
             'description' => 'max:250'
-        ]);
+            ]
+        );
 
         $this->permissionsRepo->saveNewRole($request->all());
         session()->flash('success', trans('settings.role_create_success'));
@@ -59,7 +64,8 @@ class PermissionController extends Controller
 
     /**
      * Show the form for editing a user role.
-     * @param $id
+     *
+     * @param  $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws PermissionsException
      */
@@ -75,18 +81,21 @@ class PermissionController extends Controller
 
     /**
      * Updates a user role.
-     * @param $id
-     * @param Request $request
+     *
+     * @param  $id
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws PermissionsException
      */
     public function updateRole($id, Request $request)
     {
         $this->checkPermission('user-roles-manage');
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'display_name' => 'required|min:3|max:200',
             'description' => 'max:250'
-        ]);
+            ]
+        );
 
         $this->permissionsRepo->updateRole($id, $request->all());
         session()->flash('success', trans('settings.role_update_success'));
@@ -96,7 +105,8 @@ class PermissionController extends Controller
     /**
      * Show the view to delete a role.
      * Offers the chance to migrate users.
-     * @param $id
+     *
+     * @param  $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showDeleteRole($id)
@@ -112,8 +122,9 @@ class PermissionController extends Controller
     /**
      * Delete a role from the system,
      * Migrate from a previous role if set.
-     * @param $id
-     * @param Request $request
+     *
+     * @param  $id
+     * @param  Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function deleteRole($id, Request $request)

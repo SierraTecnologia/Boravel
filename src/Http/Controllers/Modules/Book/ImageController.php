@@ -16,8 +16,9 @@ class ImageController extends Controller
 
     /**
      * ImageController constructor.
-     * @param Image $image
-     * @param File $file
+     *
+     * @param Image     $image
+     * @param File      $file
      * @param ImageRepo $imageRepo
      */
     public function __construct(Image $image, File $file, ImageRepo $imageRepo)
@@ -30,7 +31,8 @@ class ImageController extends Controller
 
     /**
      * Provide an image file from storage.
-     * @param string $path
+     *
+     * @param  string $path
      * @return mixed
      */
     public function showImage(string $path)
@@ -45,8 +47,9 @@ class ImageController extends Controller
 
     /**
      * Get all images for a specific type, Paginated
-     * @param string $type
-     * @param int $page
+     *
+     * @param  string $type
+     * @param  int    $page
      * @return \Illuminate\Http\JsonResponse
      */
     public function getAllByType($type, $page = 0)
@@ -57,16 +60,19 @@ class ImageController extends Controller
 
     /**
      * Search through images within a particular type.
-     * @param $type
-     * @param int $page
-     * @param Request $request
+     *
+     * @param  $type
+     * @param  int     $page
+     * @param  Request $request
      * @return mixed
      */
     public function searchByType(Request $request, $type, $page = 0)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'term' => 'required|string'
-        ]);
+            ]
+        );
 
         $searchTerm = $request->get('term');
         $imgData = $this->imageRepo->searchPaginatedByType($type, $searchTerm, $page, 24);
@@ -75,7 +81,8 @@ class ImageController extends Controller
 
     /**
      * Get all images for a user.
-     * @param int $page
+     *
+     * @param  int $page
      * @return \Illuminate\Http\JsonResponse
      */
     public function getAllForUserType($page = 0)
@@ -86,16 +93,19 @@ class ImageController extends Controller
 
     /**
      * Get gallery images with a specific filter such as book or page
-     * @param $filter
-     * @param int $page
-     * @param Request $request
+     *
+     * @param  $filter
+     * @param  int     $page
+     * @param  Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function getGalleryFiltered(Request $request, $filter, $page = 0)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'page_id' => 'required|integer'
-        ]);
+            ]
+        );
 
         $validFilters = collect(['page', 'book']);
         if (!$validFilters->contains($filter)) {
@@ -110,17 +120,20 @@ class ImageController extends Controller
 
     /**
      * Handles image uploads for use on pages.
-     * @param string $type
-     * @param Request $request
+     *
+     * @param  string  $type
+     * @param  Request $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
     public function uploadByType($type, Request $request)
     {
         $this->checkPermission('image-create-all');
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'file' => 'image_extension|no_double_extension|mimes:jpeg,png,gif,bmp,webp,tiff'
-        ]);
+            ]
+        );
 
         if (!$this->imageRepo->isValidType($type)) {
             return $this->jsonError(trans('errors.image_upload_type_error'));
@@ -140,15 +153,18 @@ class ImageController extends Controller
 
     /**
      * Upload a drawing to the system.
-     * @param Request $request
+     *
+     * @param  Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function uploadDrawing(Request $request)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'image' => 'required|string',
             'uploaded_to' => 'required|integer'
-        ]);
+            ]
+        );
         $this->checkPermission('image-create-all');
         $imageBase64Data = $request->get('image');
 
@@ -164,7 +180,8 @@ class ImageController extends Controller
 
     /**
      * Get the content of an image based64 encoded.
-     * @param $id
+     *
+     * @param  $id
      * @return \Illuminate\Http\JsonResponse|mixed
      */
     public function getBase64Image($id)
@@ -174,17 +191,20 @@ class ImageController extends Controller
         if ($imageData === null) {
             return $this->jsonError("Image data could not be found");
         }
-        return response()->json([
+        return response()->json(
+            [
             'content' => base64_encode($imageData)
-        ]);
+            ]
+        );
     }
 
     /**
      * Generate a sized thumbnail for an image.
-     * @param $id
-     * @param $width
-     * @param $height
-     * @param $crop
+     *
+     * @param  $id
+     * @param  $width
+     * @param  $height
+     * @param  $crop
      * @return \Illuminate\Http\JsonResponse
      * @throws ImageUploadException
      * @throws \Exception
@@ -199,17 +219,20 @@ class ImageController extends Controller
 
     /**
      * Update image details
-     * @param integer $imageId
-     * @param Request $request
+     *
+     * @param  integer $imageId
+     * @param  Request $request
      * @return \Illuminate\Http\JsonResponse
      * @throws ImageUploadException
      * @throws \Exception
      */
     public function update($imageId, Request $request)
     {
-        $this->validate($request, [
+        $this->validate(
+            $request, [
             'name' => 'required|min:2|string'
-        ]);
+            ]
+        );
         $image = $this->imageRepo->getById($imageId);
         $this->checkOwnablePermission('image-update', $image);
         $image = $this->imageRepo->updateImageDetails($image, $request->all());
@@ -218,8 +241,9 @@ class ImageController extends Controller
 
     /**
      * Show the usage of an image on pages.
-     * @param \App\Models\Components\Book\Repos\EntityRepo $entityRepo
-     * @param $id
+     *
+     * @param  \App\Models\Components\Book\Repos\EntityRepo $entityRepo
+     * @param  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function usage(EntityRepo $entityRepo, $id)
@@ -231,7 +255,8 @@ class ImageController extends Controller
 
     /**
      * Deletes an image and all thumbnail/image files
-     * @param int $id
+     *
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
