@@ -36,7 +36,7 @@ class BookController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $books = $this->entityRepo->getAllPaginated('book', 18);
         $recents = $this->signedIn ? $this->entityRepo->getRecentlyViewed('book', 4, 0) : false;

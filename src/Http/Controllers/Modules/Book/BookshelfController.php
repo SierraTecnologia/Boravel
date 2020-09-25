@@ -36,7 +36,7 @@ class BookshelfController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $shelves = $this->entityRepo->getAllPaginated('bookshelf', 18);
         $recents = $this->signedIn ? $this->entityRepo->getRecentlyViewed('bookshelf', 4, 0) : false;

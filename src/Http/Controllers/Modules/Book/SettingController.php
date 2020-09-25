@@ -12,7 +12,7 @@ class SettingController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $this->checkPermission('settings-manage');
         $this->setPageTitle(trans('settings.settings'));

@@ -21,7 +21,7 @@ class HomeController extends Controller
     *
     * @return Response
     */
-    public function index()
+    public function index(Request $request)
     {
         // Show the page
         return view('gp.home.index');
