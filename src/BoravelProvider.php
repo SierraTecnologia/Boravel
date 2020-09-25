@@ -2,30 +2,30 @@
 
 namespace Boravel;
 
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\View;
-use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Route;
-// use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
-
-use BotMan\Studio\Providers\DriverServiceProvider as ServiceProvider;
-use BotMan\Tinker\TinkerServiceProvider;
-use BotMan\BotMan\BotManServiceProvider;
-use BotMan\Studio\Providers\StudioServiceProvider;
 use Boravel\Boravel;
 use Boravel\Services\BoravelService;
-
+use BotMan\BotMan\BotManServiceProvider;
 use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\Drivers\Facebook\FacebookDriver;
+// use Illuminate\Support\ServiceProvider;
 use BotMan\Drivers\Slack\SlackDriver;
 use BotMan\Drivers\Telegram\TelegramDriver;
+use BotMan\Studio\Providers\DriverServiceProvider as ServiceProvider;
+use BotMan\Studio\Providers\StudioServiceProvider;
 
+use BotMan\Tinker\TinkerServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Foundation\AliasLoader;
+use Illuminate\Routing\Router;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
+
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
+
+use Illuminate\Support\Str;
 
 use Muleta\Traits\Providers\ConsoleTools;
 
@@ -163,14 +163,16 @@ class BoravelProvider extends ServiceProvider
         $this->publishes(
             [
                 $viewsPath => base_path('resources/views/vendor/boravel'),
-            ], 'views'
+            ],
+            'views'
         );
 
         $loader = AliasLoader::getInstance();
         $loader->alias('Boravel', BoravelFacade::class);
 
         $this->app->singleton(
-            'boravel', function () {
+            'boravel',
+            function () {
                 return new Boravel();
             }
         );
@@ -179,7 +181,8 @@ class BoravelProvider extends ServiceProvider
          * Singleton Boravel
          */
         $this->app->singleton(
-            BoravelService::class, function ($app) {
+            BoravelService::class,
+            function ($app) {
                 Log::debug('Singleton Boravel');
                 // try {
                 //     throw new \Exception();
@@ -230,7 +233,7 @@ class BoravelProvider extends ServiceProvider
     protected function loadConfigs()
     {
         
-        // Merge own configs into user configs 
+        // Merge own configs into user configs
         $this->mergeConfigFrom($this->getPublishesPath('config/botman/config.php'), 'botman.config');
         $this->mergeConfigFrom($this->getPublishesPath('config/botman/discord.php'), 'botman.discord');
         $this->mergeConfigFrom($this->getPublishesPath('config/botman/facebook.php'), 'botman.facebook');
@@ -242,8 +245,6 @@ class BoravelProvider extends ServiceProvider
 
     protected function publishMigrations()
     {
-        
-       
     }
        
     protected function publishAssets()
@@ -255,7 +256,6 @@ class BoravelProvider extends ServiceProvider
         //     $this->getDistPath('boravel') => public_path('assets/boravel')
         //     ], ['public',  'boravel', 'boravel-public']
         // );
-
     }
 
     protected function publishConfigs()
@@ -271,14 +271,15 @@ class BoravelProvider extends ServiceProvider
             // $this->getPublishesPath('config/settings') => config_path('settings'),
             // Files
             $this->getPublishesPath('config/boravel.php') => config_path('boravel.php')
-            ], ['config',  'boravel', 'boravel-config']
+            ],
+            ['config',  'boravel', 'boravel-config']
         );
-
     }
     protected function bootEvents()
     {
         $this->app['events']->listen(
-            BuildingMenu::class, function (BuildingMenu $event) {
+            BuildingMenu::class,
+            function (BuildingMenu $event) {
                 (new \Pedreiro\Template\Mounters\SystemMount())->loadMenuForAdminlte($event);
             }
         );
