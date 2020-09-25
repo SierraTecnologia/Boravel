@@ -44,7 +44,7 @@ abstract class ResourceController extends Controller
      *
      * @var string
      */
-    protected $title;
+    public $title;
 
     /**
      * Page subtitle.
