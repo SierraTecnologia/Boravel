@@ -158,7 +158,7 @@ class CategoryController extends ResourceController
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         // Make sure resource exists
         $resource = $this->resource->findOrFail($id);

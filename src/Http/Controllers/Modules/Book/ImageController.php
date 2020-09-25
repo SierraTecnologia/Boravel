@@ -260,7 +260,7 @@ class ImageController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $image = $this->imageRepo->getById($id);
         $this->checkOwnablePermission('image-delete', $image);

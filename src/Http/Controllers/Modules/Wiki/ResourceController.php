@@ -207,7 +207,7 @@ abstract class ResourceController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         // Get the resource if it has not been provided by the child class
         if(! $this->resource->getKey()) {
@@ -259,7 +259,7 @@ abstract class ResourceController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         // Make sure resource exists
         $resource = $this->resource->findOrFail($id);

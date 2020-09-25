@@ -91,7 +91,7 @@ class CommentController extends Controller
      * @param  integer $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $comment = $this->commentRepo->getById($id);
         $this->checkOwnablePermission('comment-delete', $comment);

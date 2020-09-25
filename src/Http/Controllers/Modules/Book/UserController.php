@@ -215,7 +215,7 @@ class UserController extends Controller
      * @return Response
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $this->preventAccessForDemoUsers();
         $this->checkPermissionOr(
