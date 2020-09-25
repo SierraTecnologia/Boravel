@@ -14,7 +14,7 @@
                     <input class="form-control" name="coupon" placeholder="Coupon Code">
                 </div>
                 <br />
-                <input class="btn btn-primary pull-right" type="submit" value="Apply">
+                <input class="btn btn-primary float-right" type="submit" value="Apply">
             </form>
         </div>
     </div>

@@ -24,14 +24,14 @@
                 <div class="form-group">
                     <input class="form-control" required name="address[country]" placeholder="Country" value="{!! siravel()->customer()->shippingAddress('country') !!}">
                 </div>
-                <input class="btn btn-outline-secondary pull-right" type="submit" value="Re-calculate Shipping">
+                <input class="btn btn-outline-secondary float-right" type="submit" value="Re-calculate Shipping">
             </form>
         </div>
         <div class="col-md-8">
             <h4 class="mb-4">Shopping Cart</h4>
             @include('siravel-frontend::checkout.coupon')
             @include('siravel-frontend::checkout.products')
-            <a class="pull-right btn btn-primary" href="{!! route('siravel.payment') !!}">Purchase</a>
+            <a class="float-right btn btn-primary" href="{!! route('siravel.payment') !!}">Purchase</a>
         </div>
     </div>
 

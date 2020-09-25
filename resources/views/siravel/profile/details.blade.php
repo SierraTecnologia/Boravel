@@ -38,7 +38,7 @@
                     </label>
                 </div>
                 <br />
-                <input class="btn btn-primary pull-right" type="submit" value="Save">
+                <input class="btn btn-primary float-right" type="submit" value="Save">
             </form>
         </div>
         <div class="col-md-6">

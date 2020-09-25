@@ -14,7 +14,7 @@
                 <form id="deleteCouponForm" method="post" action="{!! url(config('cms.backend-route-prefix', 'cms').'/coupons/'.$coupon->id) !!}">
                     {!! csrf_field() !!}
                     {!! method_field('DELETE') !!}
-                    <button class="btn delete-coupon-btn btn-danger pull-right" type="submit"><i class="fa fa-trash"></i> Delete</button>
+                    <button class="btn delete-coupon-btn btn-danger float-right" type="submit"><i class="fa fa-trash"></i> Delete</button>
                 </form>
             </div>
         </div>

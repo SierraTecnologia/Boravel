@@ -15,7 +15,7 @@
                     <p>Are you sure want to cancel this item? This item will be refunded to the customer.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <a id="cancelItemBtn" type="button" class="btn btn-warning" href="#">Cancel Order Item</a>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                 </table>
                 @if (!$orderItem->was_refunded)
                     <div class="text-right">
-                        {!! Form::open(['id' => 'cancelItemForm', 'url' => config('cms.backend-route-prefix', 'cms').'/orders/item/cancel', 'method' => 'post', 'class' => 'inline-form pull-right']) !!}
+                        {!! Form::open(['id' => 'cancelItemForm', 'url' => config('cms.backend-route-prefix', 'cms').'/orders/item/cancel', 'method' => 'post', 'class' => 'inline-form float-right']) !!}
                             @input_maker_create('id', ['type' => 'hidden'], $orderItem)
                             {!! Form::submit('Cancel Order Item', ['class' => 'btn btn-warning']) !!}
                         {!! Form::close() !!}

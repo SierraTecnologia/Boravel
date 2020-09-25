@@ -11,7 +11,7 @@
 
                 {!! FormMaker::fromTable("coupons", config('siravel.forms.coupons')) !!}
 
-                {!! Form::submit('Save', ['class' => 'btn btn-primary pull-right']) !!}
+                {!! Form::submit('Save', ['class' => 'btn btn-primary float-right']) !!}
 
                 {!! Form::close() !!}
             </div>

@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div>
-                    <input id="pay" type="submit" class="btn btn-primary pull-right" value="Pay">
+                    <input id="pay" type="submit" class="btn btn-primary float-right" value="Pay">
                 </div>
             </form>
 

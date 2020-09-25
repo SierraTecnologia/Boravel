@@ -32,20 +32,20 @@
 
                 {!! FormMaker::setColumns(2)->fromObject($plan, config('siravel.forms.plans-edit')) !!}
 
-                {!! Form::submit('Update', ['class' => 'btn btn-primary pull-right']) !!}
+                {!! Form::submit('Update', ['class' => 'btn btn-primary float-right']) !!}
 
                 {!! Form::close() !!}
 
                 @if ($plan->enabled)
-                    <a href="{{ url(config('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/disable') }}" class="btn btn-warning pull-right raw-margin-right-16">Disable</a>
+                    <a href="{{ url(config('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/disable') }}" class="btn btn-warning float-right raw-margin-right-16">Disable</a>
                 @else
-                    <a href="{{ url(config('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/enable') }}" class="btn btn-outline-success pull-right raw-margin-right-16">Enable</a>
+                    <a href="{{ url(config('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id.'/state-change/enable') }}" class="btn btn-outline-success float-right raw-margin-right-16">Enable</a>
                 @endif
 
                 <form id="deletePlanForm" method="post" action="{!! url(config('cms.backend-route-prefix', 'cms').'/plans/'.$plan->id) !!}">
                     {!! csrf_field() !!}
                     {!! method_field('DELETE') !!}
-                    <button class="btn delete-plan-btn btn-danger pull-left" type="submit"><i class="fa fa-trash"></i> Delete</button>
+                    <button class="btn delete-plan-btn btn-danger float-left" type="submit"><i class="fa fa-trash"></i> Delete</button>
                 </form>
             </div>
         </div>
@@ -76,7 +76,7 @@
                                         <form class="cancel-form" method="post" action="{!! url('cms/plans/'.$plan->id.'/cancel-subscription/'.$customer->id) !!}">
                                             {!! csrf_field() !!}
                                             {!! method_field('DELETE') !!}
-                                            <button class="btn btn-danger btn-xs pull-right" type="submit"><i class="fa fa-close"></i> Cancel Subscription</button>
+                                            <button class="btn btn-danger btn-xs float-right" type="submit"><i class="fa fa-close"></i> Cancel Subscription</button>
                                         </form>
                                     @endif
                                 </td>

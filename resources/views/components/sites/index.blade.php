@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="box card text-center site-intro rm-link-color">
+    <div class="box panel card text-center site-intro rm-link-color">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         Bem-vindo ao Instituto Hoppe Brasil, prioridade ao libertarianismo, tópicos relacionados à anarquia. Entre em contato com <a href="mailto:ricardo@sierratecnologia.com.br">Nossa Equipe</a>
     </div>

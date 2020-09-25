@@ -7,7 +7,7 @@
                 <div class="input-group">
                     <input id="coupon" class="form-control" type="text" name="coupon" placeholder="Coupon Code" value="{{ Session::get('coupon_code') }}">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Apply</button>
+                        <button class="btn btn-secondary" type="submit">Apply</button>
                     </span>
                 </div>
             </div>

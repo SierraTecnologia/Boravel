@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <a class="btn btn-default raw-margin-top-24" href="{!! url(app(FileService::class)->fileAsDownload($product->file, $product->file)) !!}">Download File</a>
+            <a class="btn btn-secondary raw-margin-top-24" href="{!! url(app(FileService::class)->fileAsDownload($product->file, $product->file)) !!}">Download File</a>
         </div>
         <div class="col-lg-6">
             <div class="form-group">

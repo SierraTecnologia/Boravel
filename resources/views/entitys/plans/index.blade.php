@@ -24,7 +24,7 @@
                                 <td><a href="{!! route(config('cms.backend-route-prefix', 'cms').'.plans.edit', [$plan->id]) !!}">{{ $plan->name }}</a></td>
                                 <td>@if ($plan->enabled) <span class="fa fa-check"></span> @endif</td>
                                 <td class="text-right">
-                                    <a class="btn btn-outline-primary btn-sm pull-right" href="{!! route(config('cms.backend-route-prefix', 'cms').'.plans.edit', [$plan->id]) !!}"><i class="fa fa-edit"></i> Edit</a>
+                                    <a class="btn btn-outline-primary btn-sm float-right" href="{!! route(config('cms.backend-route-prefix', 'cms').'.plans.edit', [$plan->id]) !!}"><i class="fa fa-edit"></i> Edit</a>
                                 </td>
                             </tr>
                         @endforeach

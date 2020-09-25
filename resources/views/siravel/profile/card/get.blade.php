@@ -16,7 +16,7 @@
                     <input class="form-control" disabled type="text" name="number" value="**** **** **** {{ auth()->user()->meta->card_last_four }}">
                 </div>
                 <div class="form-group">
-                    <a href="{{ route('siravel.account.card-change') }}" class="btn btn-warning pull-right">Change Card</a>
+                    <a href="{{ route('siravel.account.card-change') }}" class="btn btn-warning float-right">Change Card</a>
                 </div>
             </div>
         </div>

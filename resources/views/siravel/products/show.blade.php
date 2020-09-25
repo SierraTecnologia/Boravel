@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            <img class="img-thumbnail img-responsive" alt="" src="{{ $product->hero_image_url }}" />
+            <img class="img-thumbnail img-fluid" alt="" src="{{ $product->hero_image_url }}" />
 
             <table class="table table-stripped">
                 <tr>
@@ -34,7 +34,7 @@
         </div>
         <div class="col-md-4">
             @foreach($product->images as $image)
-                <img class="img-thumbnail img-responsive mb-4" alt="" src="{{ $image->url }}" />
+                <img class="img-thumbnail img-fluid mb-4" alt="" src="{{ $image->url }}" />
             @endforeach
         </div>
     </div>

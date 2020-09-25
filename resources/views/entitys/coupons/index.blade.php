@@ -28,7 +28,7 @@
                                 <td>@if ($coupon->for_subscriptions) <span class="fa fa-check"></span> @endif</td>
                                 <td>{{ $coupon->value_string }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-default btn-sm pull-right" href="{!! route(config('cms.backend-route-prefix', 'cms').'.coupons.show', [$coupon->id]) !!}"><i class="fa fa-eye"></i> View</a>
+                                    <a class="btn btn-secondary btn-sm float-right" href="{!! route(config('cms.backend-route-prefix', 'cms').'.coupons.show', [$coupon->id]) !!}"><i class="fa fa-eye"></i> View</a>
                                 </td>
                             </tr>
                         @endforeach

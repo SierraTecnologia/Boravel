@@ -91,13 +91,13 @@
                 ],
             ]) !!}
 
-            <div class="form-group pull-right">
+            <div class="form-group float-right">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
             </div>
         {!! Form::close() !!}
 
         @if ($order->status !== 'cancelled' && !$order->hasRefundedOrderItems())
-            {!! Form::open(['id' => 'cancelForm', 'url' => config('cms.backend-route-prefix', 'cms').'/orders/cancel', 'method' => 'post', 'class' => 'inline-form pull-left']) !!}
+            {!! Form::open(['id' => 'cancelForm', 'url' => config('cms.backend-route-prefix', 'cms').'/orders/cancel', 'method' => 'post', 'class' => 'inline-form float-left']) !!}
                 @input_maker_create('id', ['type' => 'hidden'], $order)
                 {!! Form::submit('Cancel Order', ['class' => 'btn btn-warning']) !!}
             {!! Form::close() !!}
