@@ -12,30 +12,34 @@ class CreateJointPermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('joint_permissions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('role_id');
-            $table->string('entity_type');
-            $table->integer('entity_id');
-            $table->string('action');
-            $table->boolean('has_permission')->default(false);
-            $table->boolean('has_permission_own')->default(false);
-            $table->integer('created_by');
-            // Create indexes
-            $table->index(['entity_id', 'entity_type']);
-            $table->index('has_permission');
-            $table->index('has_permission_own');
-            $table->index('role_id');
-            $table->index('action');
-            $table->index('created_by');
-        });
+        Schema::create(
+            'joint_permissions', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('role_id');
+                $table->string('entity_type');
+                $table->integer('entity_id');
+                $table->string('action');
+                $table->boolean('has_permission')->default(false);
+                $table->boolean('has_permission_own')->default(false);
+                $table->integer('created_by');
+                // Create indexes
+                $table->index(['entity_id', 'entity_type']);
+                $table->index('has_permission');
+                $table->index('has_permission_own');
+                $table->index('role_id');
+                $table->index('action');
+                $table->index('created_by');
+            }
+        );
 
-        Schema::table('roles', function (Blueprint $table) {
-            $table->string('system_name');
-            $table->boolean('hidden')->default(false);
-            $table->index('hidden');
-            $table->index('system_name');
-        });
+        Schema::table(
+            'roles', function (Blueprint $table) {
+                $table->string('system_name');
+                $table->boolean('hidden')->default(false);
+                $table->index('hidden');
+                $table->index('system_name');
+            }
+        );
 
         Schema::rename('permissions', 'role_permissions');
         Schema::rename('restrictions', 'entity_permissions');
@@ -65,10 +69,12 @@ class CreateJointPermissionsTable extends Migration
                 $name = strtolower($entity) . '-' . strtolower(str_replace(' ', '-', $op));
                 $permission = DB::table('role_permissions')->where('name', '=', $name)->first();
                 // Assign view permission to public
-                DB::table('permission_role')->insert([
+                DB::table('permission_role')->insert(
+                    [
                     'permission_id' => $permission->id,
                     'role_id' => $publicRoleId
-                ]);
+                    ]
+                );
             }
         }
 
@@ -91,9 +97,11 @@ class CreateJointPermissionsTable extends Migration
         // Delete the public role
         DB::table('roles')->where('system_name', '=', 'public')->delete();
 
-        Schema::table('roles', function (Blueprint $table) {
-            $table->dropColumn('system_name');
-            $table->dropColumn('hidden');
-        });
+        Schema::table(
+            'roles', function (Blueprint $table) {
+                $table->dropColumn('system_name');
+                $table->dropColumn('hidden');
+            }
+        );
     }
 }

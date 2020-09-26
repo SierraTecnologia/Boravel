@@ -13,10 +13,12 @@ class AddRoleExternalAuthId extends Migration
      */
     public function up()
     {
-        Schema::table('roles', function (Blueprint $table) {
-            $table->string('external_auth_id', 200)->default('');
-            $table->index('external_auth_id');
-        });
+        Schema::table(
+            'roles', function (Blueprint $table) {
+                $table->string('external_auth_id', 200)->default('');
+                $table->index('external_auth_id');
+            }
+        );
     }
 
     /**
@@ -26,8 +28,10 @@ class AddRoleExternalAuthId extends Migration
      */
     public function down()
     {
-        Schema::table('roles', function (Blueprint $table) {
-            $table->dropColumn('external_auth_id');
-        });
+        Schema::table(
+            'roles', function (Blueprint $table) {
+                $table->dropColumn('external_auth_id');
+            }
+        );
     }
 }

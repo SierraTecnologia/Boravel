@@ -12,13 +12,17 @@ class AddMarkdownSupport extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->longText('markdown')->default('');
-        });
+        Schema::table(
+            'pages', function (Blueprint $table) {
+                $table->longText('markdown')->default('');
+            }
+        );
 
-        Schema::table('page_revisions', function (Blueprint $table) {
-            $table->longText('markdown')->default('');
-        });
+        Schema::table(
+            'page_revisions', function (Blueprint $table) {
+                $table->longText('markdown')->default('');
+            }
+        );
     }
 
     /**
@@ -28,12 +32,16 @@ class AddMarkdownSupport extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('markdown');
-        });
+        Schema::table(
+            'pages', function (Blueprint $table) {
+                $table->dropColumn('markdown');
+            }
+        );
 
-        Schema::table('page_revisions', function (Blueprint $table) {
-            $table->dropColumn('markdown');
-        });
+        Schema::table(
+            'page_revisions', function (Blueprint $table) {
+                $table->dropColumn('markdown');
+            }
+        );
     }
 }

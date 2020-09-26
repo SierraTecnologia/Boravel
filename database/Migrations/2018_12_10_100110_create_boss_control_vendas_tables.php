@@ -14,24 +14,28 @@ class CreateBossControlVendasTables extends Migration
     public function up()
     {
 
-        Schema::create('payments', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->float('value');
-            $table->string('paymentable_id')->nullable();
-            $table->string('paymentable_type')->nullable();
-            $table->string('targetable_id')->nullable();
-            $table->string('targetable_type')->nullable();
-            $table->timestamps();
-        });
+        Schema::create(
+            'payments', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->float('value');
+                $table->string('paymentable_id')->nullable();
+                $table->string('paymentable_type')->nullable();
+                $table->string('targetable_id')->nullable();
+                $table->string('targetable_type')->nullable();
+                $table->timestamps();
+            }
+        );
 
 
-        Schema::create('payment_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
-            $table->timestamps();
-        });
+        Schema::create(
+            'payment_types', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->string('slug');
+                $table->timestamps();
+            }
+        );
     }
 
     /**

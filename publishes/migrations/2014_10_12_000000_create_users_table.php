@@ -13,36 +13,40 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create(
+            'roles', function (Blueprint $table) {
 
-            // Set the storage engine and primary key
-            $table->engine = 'InnoDB';
-            $table->increments('id');
+                // Set the storage engine and primary key
+                $table->engine = 'InnoDB';
+                $table->increments('id');
 
-            // Ordinary columns
-            $table->string('name')->unique();
-            $table->boolean('is_default')->unsigned()->default(0);
+                // Ordinary columns
+                $table->string('name')->unique();
+                $table->boolean('is_default')->unsigned()->default(0);
 
-            // Automatic columns
-            $table->timestamps();
-        });
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('cpf')->nullable();
-            $table->string('email')->nullable();
-            $table->string('username')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->string('token');
-            $table->string('language_code')->nullable();
-            $table->string('region_code')->nullable();
+                // Automatic columns
+                $table->timestamps();
+            }
+        );
+        Schema::create(
+            'users', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name')->nullable();
+                $table->string('cpf')->nullable();
+                $table->string('email')->nullable();
+                $table->string('username')->nullable();
+                $table->timestamp('email_verified_at')->nullable();
+                $table->string('password');
+                $table->rememberToken();
+                $table->string('token');
+                $table->string('language_code')->nullable();
+                $table->string('region_code')->nullable();
 
-            $table->integer('role_id')->unsigned();
+                $table->integer('role_id')->unsigned();
 
-            $table->timestamps();
-        });
+                $table->timestamps();
+            }
+        );
     }
 
     /**

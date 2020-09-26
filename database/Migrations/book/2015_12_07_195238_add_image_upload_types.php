@@ -13,16 +13,20 @@ class AddImageUploadTypes extends Migration
      */
     public function up()
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->string('path', 400);
-            $table->string('type')->index();
-        });
+        Schema::table(
+            'images', function (Blueprint $table) {
+                $table->string('path', 400);
+                $table->string('type')->index();
+            }
+        );
 
-        Image::all()->each(function($image) {
-            $image->path = $image->url;
-            $image->type = 'gallery';
-            $image->save();
-        });
+        Image::all()->each(
+            function ($image) {
+                $image->path = $image->url;
+                $image->type = 'gallery';
+                $image->save();
+            }
+        );
     }
 
     /**
@@ -32,10 +36,12 @@ class AddImageUploadTypes extends Migration
      */
     public function down()
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->dropColumn('type');
-            $table->dropColumn('path');
-        });
+        Schema::table(
+            'images', function (Blueprint $table) {
+                $table->dropColumn('type');
+                $table->dropColumn('path');
+            }
+        );
 
     }
 }

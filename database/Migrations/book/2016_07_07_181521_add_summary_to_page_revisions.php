@@ -12,9 +12,11 @@ class AddSummaryToPageRevisions extends Migration
      */
     public function up()
     {
-        Schema::table('page_revisions', function ($table) {
-            $table->string('summary')->nullable();
-        });
+        Schema::table(
+            'page_revisions', function ($table) {
+                $table->string('summary')->nullable();
+            }
+        );
     }
 
     /**
@@ -24,8 +26,10 @@ class AddSummaryToPageRevisions extends Migration
      */
     public function down()
     {
-        Schema::table('page_revisions', function ($table) {
-            $table->dropColumn('summary');
-        });
+        Schema::table(
+            'page_revisions', function ($table) {
+                $table->dropColumn('summary');
+            }
+        );
     }
 }

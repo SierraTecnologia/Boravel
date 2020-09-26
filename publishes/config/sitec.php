@@ -161,7 +161,8 @@ return [
             ],
             'currency' => [
                 'type' => 'select',
-                'options' => config('siravel.currencies', [
+                'options' => config(
+                    'siravel.currencies', [
                     'AUD' => 'aud',
                     'CAD' => 'cad',
                     'USD' => 'usd',
@@ -169,7 +170,8 @@ return [
                     'DKK' => 'dkk',
                     'NOK' => 'nok',
                     'SEK' => 'sek',
-                ]),
+                    ]
+                ),
             ],
             'trial_days' => [
                 'type' => 'number',

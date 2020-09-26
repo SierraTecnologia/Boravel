@@ -23,7 +23,8 @@ class CreateBookshelvesTable extends Migration
             DB::statement("ALTER TABLE {$prefix}pages ENGINE = InnoDB;");
             DB::statement("ALTER TABLE {$prefix}chapters ENGINE = InnoDB;");
             DB::statement("ALTER TABLE {$prefix}books ENGINE = InnoDB;");
-        } catch (Exception $exception) {}
+        } catch (Exception $exception) {
+        }
 
         // Here we have table drops before the creations due to upgrade issues
         // people were having due to the bookshelves_books table creation failing.
@@ -35,35 +36,39 @@ class CreateBookshelvesTable extends Migration
             Schema::dropIfExists('bookshelves');
         }
 
-        Schema::create('bookshelves', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 200);
-            $table->string('slug', 200);
-            $table->text('description');
-            $table->integer('created_by')->nullable()->default(null);
-            $table->integer('updated_by')->nullable()->default(null);
-            $table->boolean('restricted')->default(false);
-            $table->integer('image_id')->nullable()->default(null);
-            $table->timestamps();
+        Schema::create(
+            'bookshelves', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name', 200);
+                $table->string('slug', 200);
+                $table->text('description');
+                $table->integer('created_by')->nullable()->default(null);
+                $table->integer('updated_by')->nullable()->default(null);
+                $table->boolean('restricted')->default(false);
+                $table->integer('image_id')->nullable()->default(null);
+                $table->timestamps();
 
-            $table->index('slug');
-            $table->index('created_by');
-            $table->index('updated_by');
-            $table->index('restricted');
-        });
+                $table->index('slug');
+                $table->index('created_by');
+                $table->index('updated_by');
+                $table->index('restricted');
+            }
+        );
 
-        Schema::create('bookshelves_books', function (Blueprint $table) {
-            $table->integer('bookshelf_id')->unsigned();
-            $table->integer('book_id')->unsigned();
-            $table->integer('order')->unsigned();
+        Schema::create(
+            'bookshelves_books', function (Blueprint $table) {
+                $table->integer('bookshelf_id')->unsigned();
+                $table->integer('book_id')->unsigned();
+                $table->integer('order')->unsigned();
 
-            $table->primary(['bookshelf_id', 'book_id']);
+                $table->primary(['bookshelf_id', 'book_id']);
 
-            $table->foreign('bookshelf_id')->references('id')->on('bookshelves')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('book_id')->references('id')->on('books')
-                ->onUpdate('cascade')->onDelete('cascade');
-        });
+                $table->foreign('bookshelf_id')->references('id')->on('bookshelves')
+                    ->onUpdate('cascade')->onDelete('cascade');
+                $table->foreign('book_id')->references('id')->on('books')
+                    ->onUpdate('cascade')->onDelete('cascade');
+            }
+        );
 
         // Delete old bookshelf permissions
         // Needed to to issues upon upgrade.
@@ -78,21 +83,27 @@ class CreateBookshelvesTable extends Migration
                 ->leftJoin('roles', 'roles.id', '=', 'permission_role.role_id')
                 ->where('role_permissions.name', '=', 'book-' . $dbOpName)->get(['roles.id'])->pluck('id');
 
-            $permId = DB::table('role_permissions')->insertGetId([
+            $permId = DB::table('role_permissions')->insertGetId(
+                [
                 'name' => 'bookshelf-' . $dbOpName,
                 'display_name' => $op . ' ' . 'BookShelves',
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
-            ]);
+                ]
+            );
 
-            $rowsToInsert = $roleIdsWithBookPermission->filter(function($roleId) {
-                return !is_null($roleId);
-            })->map(function($roleId) use ($permId) {
-                return [
+            $rowsToInsert = $roleIdsWithBookPermission->filter(
+                function ($roleId) {
+                    return !is_null($roleId);
+                }
+            )->map(
+                function ($roleId) use ($permId) {
+                    return [
                     'role_id' => $roleId,
                     'permission_id' => $permId
-                ];
-            })->toArray();
+                    ];
+                }
+            )->toArray();
 
             // Assign view permission to all current roles
             DB::table('permission_role')->insert($rowsToInsert);

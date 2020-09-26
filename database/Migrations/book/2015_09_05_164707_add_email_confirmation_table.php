@@ -12,16 +12,20 @@ class AddEmailConfirmationTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('email_confirmed')->default(true);
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->boolean('email_confirmed')->default(true);
+            }
+        );
 
-        Schema::create('email_confirmations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->index();
-            $table->string('token')->index();
-            $table->nullableTimestamps();
-        });
+        Schema::create(
+            'email_confirmations', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('user_id')->index();
+                $table->string('token')->index();
+                $table->nullableTimestamps();
+            }
+        );
     }
 
     /**
@@ -31,9 +35,11 @@ class AddEmailConfirmationTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('email_confirmed');
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->dropColumn('email_confirmed');
+            }
+        );
         Schema::dropIfExists('email_confirmations');
     }
 }

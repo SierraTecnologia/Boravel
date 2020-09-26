@@ -12,9 +12,11 @@ class AddExternalAuthToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('external_auth_id')->index();
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->string('external_auth_id')->index();
+            }
+        );
     }
 
     /**
@@ -24,8 +26,10 @@ class AddExternalAuthToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('external_auth_id');
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->dropColumn('external_auth_id');
+            }
+        );
     }
 }

@@ -14,15 +14,17 @@ class CreateBusinessVendasTables extends Migration
     public function up()
     {
 
-        Schema::create('venda_propostas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('value')->nullable();
-            $table->string('money_id')->nullable();
-            $table->string('date')->nullable();
-            $table->string('parcelas')->nullable();
-            $table->string('is_active')->nullable();
-            $table->timestamps();
-        });
+        Schema::create(
+            'venda_propostas', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('value')->nullable();
+                $table->string('money_id')->nullable();
+                $table->string('date')->nullable();
+                $table->string('parcelas')->nullable();
+                $table->string('is_active')->nullable();
+                $table->timestamps();
+            }
+        );
     }
 
     /**
@@ -32,6 +34,6 @@ class CreateBusinessVendasTables extends Migration
      */
     public function down()
     {
-		Schema::dropIfExists('propostas');
+        Schema::dropIfExists('propostas');
     }
 }

@@ -14,32 +14,38 @@ class CreateBossControlAcaoHumanaTable extends Migration
     public function up()
     {
         // Para Previsões Futuras
-        Schema::create('estimates', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('originalEstimateSeconds')->nullable();
-            $table->integer('remainingEstimateSeconds')->nullable();
-            $table->integer('timeSpentSeconds')->nullable();
-            $table->integer('estimatable_id');
-            $table->string('estimatable_type'); 
-            $table->timestamps();
-        });
+        Schema::create(
+            'estimates', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('originalEstimateSeconds')->nullable();
+                $table->integer('remainingEstimateSeconds')->nullable();
+                $table->integer('timeSpentSeconds')->nullable();
+                $table->integer('estimatable_id');
+                $table->string('estimatable_type'); 
+                $table->timestamps();
+            }
+        );
 
         // Para Previsões Futuras
-        Schema::create('spents', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('collaborator_id')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->timestamp('initwork')->nullable();
-            $table->integer('tempo_gasto')->nullable();
-            $table->timestamps();
-        });
+        Schema::create(
+            'spents', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('collaborator_id')->nullable();
+                $table->integer('user_id')->nullable();
+                $table->timestamp('initwork')->nullable();
+                $table->integer('tempo_gasto')->nullable();
+                $table->timestamps();
+            }
+        );
 
-        Schema::create('spentables', function (Blueprint $table) {
-            $table->integer('spent_id');
-            $table->integer('spentable_id');
-            $table->string('spentable_type'); 
-            $table->timestamps();
-        });
+        Schema::create(
+            'spentables', function (Blueprint $table) {
+                $table->integer('spent_id');
+                $table->integer('spentable_id');
+                $table->string('spentable_type'); 
+                $table->timestamps();
+            }
+        );
 
     }
     /**

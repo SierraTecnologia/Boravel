@@ -13,31 +13,37 @@ class CreateIntegrationsTables extends Migration
      */
     public function up()
     {
-        Schema::create('integration_services', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('slug')->nullable();
-            $table->integer('status')->default(1);
-            $table->timestamps();
-        });
-        Schema::create('integration_tokens', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('account');
-            $table->string('token');
-            $table->integer('integration_service_id');
-            $table->integer('status')->default(1);
-            $table->string('obs')->nullable();
-            $table->json('scopes')->nullable();
-            $table->timestamps();
-        });
-        Schema::create('integration_token_accesses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('model');
-            $table->string('model_id');
-            $table->string('token_id');
-            $table->integer('status')->default(1);
-            $table->timestamps();
-        });
+        Schema::create(
+            'integration_services', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->string('slug')->nullable();
+                $table->integer('status')->default(1);
+                $table->timestamps();
+            }
+        );
+        Schema::create(
+            'integration_tokens', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('account');
+                $table->string('token');
+                $table->integer('integration_service_id');
+                $table->integer('status')->default(1);
+                $table->string('obs')->nullable();
+                $table->json('scopes')->nullable();
+                $table->timestamps();
+            }
+        );
+        Schema::create(
+            'integration_token_accesses', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('model');
+                $table->string('model_id');
+                $table->string('token_id');
+                $table->integer('status')->default(1);
+                $table->timestamps();
+            }
+        );
     }
 
     /**

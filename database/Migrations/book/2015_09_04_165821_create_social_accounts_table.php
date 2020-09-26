@@ -12,14 +12,16 @@ class CreateSocialAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_accounts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->index();
-            $table->string('driver')->index();
-            $table->string('driver_id');
-            $table->string('avatar');
-            $table->nullableTimestamps();
-        });
+        Schema::create(
+            'social_accounts', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('user_id')->index();
+                $table->string('driver')->index();
+                $table->string('driver_id');
+                $table->string('avatar');
+                $table->nullableTimestamps();
+            }
+        );
     }
 
     /**

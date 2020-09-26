@@ -14,17 +14,19 @@ class CreatePagesTable extends Migration
     {
 
 
-        Schema::create('pages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('book_id');
-            $table->integer('chapter_id');
-            $table->string('name');
-            $table->string('slug')->indexed();
-            $table->longText('html');
-            $table->longText('text');
-            $table->integer('priority');
-            $table->nullableTimestamps();
-        });
+        Schema::create(
+            'pages', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('book_id');
+                $table->integer('chapter_id');
+                $table->string('name');
+                $table->string('slug')->indexed();
+                $table->longText('html');
+                $table->longText('text');
+                $table->integer('priority');
+                $table->nullableTimestamps();
+            }
+        );
     }
 
     /**

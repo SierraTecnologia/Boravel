@@ -13,13 +13,17 @@ class AddRevisionCounts extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->integer('revision_count');
-        });
-        Schema::table('page_revisions', function (Blueprint $table) {
-            $table->integer('revision_number');
-            $table->index('revision_number');
-        });
+        Schema::table(
+            'pages', function (Blueprint $table) {
+                $table->integer('revision_count');
+            }
+        );
+        Schema::table(
+            'page_revisions', function (Blueprint $table) {
+                $table->integer('revision_number');
+                $table->index('revision_number');
+            }
+        );
 
         // Update revision count
         $pTable = DB::getTablePrefix() . 'pages';
@@ -34,11 +38,15 @@ class AddRevisionCounts extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('revision_count');
-        });
-        Schema::table('page_revisions', function (Blueprint $table) {
-            $table->dropColumn('revision_number');
-        });
+        Schema::table(
+            'pages', function (Blueprint $table) {
+                $table->dropColumn('revision_count');
+            }
+        );
+        Schema::table(
+            'page_revisions', function (Blueprint $table) {
+                $table->dropColumn('revision_number');
+            }
+        );
     }
 }

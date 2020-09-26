@@ -12,15 +12,17 @@ class CreatePageRevisionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_revisions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('page_id')->indexed();
-            $table->string('name');
-            $table->longText('html');
-            $table->longText('text');
-            $table->integer('created_by');
-            $table->nullableTimestamps();
-        });
+        Schema::create(
+            'page_revisions', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('page_id')->indexed();
+                $table->string('name');
+                $table->longText('html');
+                $table->longText('text');
+                $table->integer('created_by');
+                $table->nullableTimestamps();
+            }
+        );
     }
 
     /**

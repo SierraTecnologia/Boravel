@@ -22,6 +22,7 @@ class SettingService
 
     /**
      * SettingService constructor.
+     *
      * @param Setting $setting
      * @param Cache   $cache
      */
@@ -34,8 +35,9 @@ class SettingService
     /**
      * Gets a setting from the database,
      * If not found, Returns default, Which is false by default.
-     * @param             $key
-     * @param string|bool $default
+     *
+     * @param  $key
+     * @param  string|bool $default
      * @return bool|string
      */
     public function get($key, $default = false)
@@ -56,9 +58,10 @@ class SettingService
 
     /**
      * Get a user-specific setting from the database or cache.
-     * @param \App\Models\User $user
-     * @param $key
-     * @param bool $default
+     *
+     * @param  \App\Models\User $user
+     * @param  $key
+     * @param  bool             $default
      * @return bool|string
      */
     public function getUser($user, $key, $default = false)
@@ -69,8 +72,9 @@ class SettingService
     /**
      * Gets a setting value from the cache or database.
      * Looks at the system defaults if not cached or in database.
-     * @param $key
-     * @param $default
+     *
+     * @param  $key
+     * @param  $default
      * @return mixed
      */
     protected function getValueFromStore($key, $default)
@@ -101,6 +105,7 @@ class SettingService
 
     /**
      * Clear an item from the cache completely.
+     *
      * @param $key
      */
     protected function clearFromCache($key)
@@ -114,8 +119,9 @@ class SettingService
 
     /**
      * Format a settings value
-     * @param $value
-     * @param $default
+     *
+     * @param  $value
+     * @param  $default
      * @return mixed
      */
     protected function formatValue($value, $default)
@@ -137,7 +143,8 @@ class SettingService
 
     /**
      * Checks if a setting exists.
-     * @param $key
+     *
+     * @param  $key
      * @return bool
      */
     public function has($key)
@@ -148,7 +155,8 @@ class SettingService
 
     /**
      * Check if a user setting is in the database.
-     * @param $key
+     *
+     * @param  $key
      * @return bool
      */
     public function hasUser($key)
@@ -158,15 +166,18 @@ class SettingService
 
     /**
      * Add a setting to the database.
-     * @param $key
-     * @param $value
+     *
+     * @param  $key
+     * @param  $value
      * @return bool
      */
     public function put($key, $value)
     {
-        $setting = $this->setting->firstOrNew([
+        $setting = $this->setting->firstOrNew(
+            [
             'setting_key' => $key
-        ]);
+            ]
+        );
         $setting->value = $value;
         $setting->save();
         $this->clearFromCache($key);
@@ -175,9 +186,10 @@ class SettingService
 
     /**
      * Put a user-specific setting into the database.
-     * @param \App\Models\User $user
-     * @param $key
-     * @param $value
+     *
+     * @param  \App\Models\User $user
+     * @param  $key
+     * @param  $value
      * @return bool
      */
     public function putUser($user, $key, $value)
@@ -187,7 +199,8 @@ class SettingService
 
     /**
      * Convert a setting key into a user-specific key.
-     * @param $key
+     *
+     * @param  $key
      * @return string
      */
     protected function userKey($userId, $key = '')
@@ -197,7 +210,8 @@ class SettingService
 
     /**
      * Removes a setting from the database.
-     * @param $key
+     *
+     * @param  $key
      * @return bool
      */
     public function remove($key)
@@ -212,7 +226,8 @@ class SettingService
 
     /**
      * Delete settings for a given user id.
-     * @param $userId
+     *
+     * @param  $userId
      * @return mixed
      */
     public function deleteUserSettings($userId)
@@ -222,7 +237,8 @@ class SettingService
 
     /**
      * Gets a setting model from the database for the given key.
-     * @param $key
+     *
+     * @param  $key
      * @return mixed
      */
     protected function getSettingObjectByKey($key)
@@ -235,7 +251,8 @@ class SettingService
      * Returns an override value for a setting based on certain app conditions.
      * Used where certain configuration options overrule others.
      * Returns null if no override value is available.
-     * @param $key
+     *
+     * @param  $key
      * @return bool|null
      */
     protected function getOverrideValue($key)

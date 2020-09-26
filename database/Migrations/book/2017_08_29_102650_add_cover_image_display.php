@@ -13,9 +13,11 @@ class AddCoverImageDisplay extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->integer('image_id')->nullable()->default(null);
-        });
+        Schema::table(
+            'books', function (Blueprint $table) {
+                $table->integer('image_id')->nullable()->default(null);
+            }
+        );
     }
 
     /**
@@ -25,8 +27,10 @@ class AddCoverImageDisplay extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('image_id');
-        });
+        Schema::table(
+            'books', function (Blueprint $table) {
+                $table->dropColumn('image_id');
+            }
+        );
     }
 }

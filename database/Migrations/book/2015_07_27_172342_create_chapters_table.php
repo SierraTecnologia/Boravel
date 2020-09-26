@@ -12,15 +12,17 @@ class CreateChaptersTable extends Migration
      */
     public function up()
     {
-        Schema::create('chapters', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('book_id');
-            $table->string('slug')->indexed();
-            $table->text('name');
-            $table->text('description');
-            $table->integer('priority');
-            $table->nullableTimestamps();
-        });
+        Schema::create(
+            'chapters', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('book_id');
+                $table->string('slug')->indexed();
+                $table->text('name');
+                $table->text('description');
+                $table->integer('priority');
+                $table->nullableTimestamps();
+            }
+        );
     }
 
     /**

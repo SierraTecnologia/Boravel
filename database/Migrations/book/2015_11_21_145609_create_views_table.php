@@ -12,14 +12,16 @@ class CreateViewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('views', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('viewable_id');
-            $table->string('viewable_type');
-            $table->integer('views');
-            $table->nullableTimestamps();
-        });
+        Schema::create(
+            'views', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('user_id');
+                $table->integer('viewable_id');
+                $table->string('viewable_type');
+                $table->integer('views');
+                $table->nullableTimestamps();
+            }
+        );
     }
 
     /**

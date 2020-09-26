@@ -12,9 +12,11 @@ class AddUserAvatars extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('image_id')->default(0);
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->integer('image_id')->default(0);
+            }
+        );
     }
 
     /**
@@ -24,8 +26,10 @@ class AddUserAvatars extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('image_id');
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->dropColumn('image_id');
+            }
+        );
     }
 }

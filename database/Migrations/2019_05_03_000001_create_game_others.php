@@ -14,17 +14,19 @@ class CreateGameOthers extends Migration
     public function up()
     {
         
-		Schema::create('integrations', function (Blueprint $table) {
-			$table->engine = 'InnoDB';
-			$table->increments('id')->unsigned();
-			$table->string('name', 255)->nullable();
-			$table->string('description', 255)->nullable();
-			$table->integer('code')->nullable();
-			$table->integer('status')->nullable();
-			$table->integer('integration_id')->nullable();
-			$table->timestamps();
-            $table->softDeletes();
-		});
+        Schema::create(
+            'integrations', function (Blueprint $table) {
+                $table->engine = 'InnoDB';
+                $table->increments('id')->unsigned();
+                $table->string('name', 255)->nullable();
+                $table->string('description', 255)->nullable();
+                $table->integer('code')->nullable();
+                $table->integer('status')->nullable();
+                $table->integer('integration_id')->nullable();
+                $table->timestamps();
+                $table->softDeletes();
+            }
+        );
     }
 
     /**

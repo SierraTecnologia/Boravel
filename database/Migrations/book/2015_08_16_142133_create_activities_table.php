@@ -12,16 +12,18 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('key');
-            $table->text('extra');
-            $table->integer('book_id')->indexed();
-            $table->integer('user_id');
-            $table->integer('entity_id');
-            $table->string('entity_type');
-            $table->nullableTimestamps();
-        });
+        Schema::create(
+            'activities', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('key');
+                $table->text('extra');
+                $table->integer('book_id')->indexed();
+                $table->integer('user_id');
+                $table->integer('entity_id');
+                $table->string('entity_type');
+                $table->nullableTimestamps();
+            }
+        );
     }
 
     /**

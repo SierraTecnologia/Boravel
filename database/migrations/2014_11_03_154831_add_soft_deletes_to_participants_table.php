@@ -14,9 +14,11 @@ class AddSoftDeletesToParticipantsTable extends Migration
      */
     public function up()
     {
-        Schema::table(Models::table('participants'), function (Blueprint $table) {
-            $table->softDeletes();
-        });
+        Schema::table(
+            Models::table('participants'), function (Blueprint $table) {
+                $table->softDeletes();
+            }
+        );
     }
 
     /**
@@ -26,8 +28,10 @@ class AddSoftDeletesToParticipantsTable extends Migration
      */
     public function down()
     {
-        Schema::table(Models::table('participants'), function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
+        Schema::table(
+            Models::table('participants'), function (Blueprint $table) {
+                $table->dropSoftDeletes();
+            }
+        );
     }
 }
