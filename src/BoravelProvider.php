@@ -162,7 +162,7 @@ class BoravelProvider extends ServiceProvider
         $this->loadViewsFrom($viewsPath, 'boravel');
         $this->publishes(
             [
-                $viewsPath => base_path('resources/views/vendor/boravel'),
+                $viewsPath => base_path('resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'boravel'),
             ],
             'views'
         );
