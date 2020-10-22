@@ -31,7 +31,7 @@
     "require": {
         "php": "^7.4",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
-        "privatejustice/socrates": "dev-master",
+        "privatejustice/socrates": "^0.4.0",
         "sierratecnologia/crypto": "^0.4.0",
         "sierratecnologia/muleta": "^0.4.0",
         "sierratecnologia/integrations": "^0.4.0",
