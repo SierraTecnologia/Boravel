@@ -91,8 +91,6 @@ class BoravelProvider extends ServiceProvider
         \Bkwld\Croppa\ServiceProvider::class,
         // PHP utils
         \Bkwld\Library\ServiceProvider::class,
-        // HAML
-        \Bkwld\LaravelHaml\ServiceProvider::class,
         // BrowserDetect
         \Jenssegers\Agent\AgentServiceProvider::class,
         // File uploading
