@@ -5,6 +5,7 @@ namespace Boravel\Http\Controllers\Modules\Wiki;
 use Boravel\Http\Requests\CreateCategoryRequest as CreateRequest;
 use Boravel\Http\Requests\CreateCategoryRequest as UpdateRequest;
 use Boravel\Models\Category as Model;
+use Illuminate\Http\Request;
 use Boravel\Models\Components\Book\Page;
 
 class CategoryController extends ResourceController
