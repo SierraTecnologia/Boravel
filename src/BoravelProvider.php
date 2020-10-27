@@ -91,8 +91,6 @@ class BoravelProvider extends ServiceProvider
         \Bkwld\Croppa\ServiceProvider::class,
         // PHP utils
         \Bkwld\Library\ServiceProvider::class,
-        // HAML
-        \Bkwld\LaravelHaml\ServiceProvider::class,
         // BrowserDetect
         \Jenssegers\Agent\AgentServiceProvider::class,
         // File uploading
@@ -155,14 +153,14 @@ class BoravelProvider extends ServiceProvider
         $this->loadConfigs();
         
         // Register Migrations
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'migrations');
 
         // View namespace
         $viewsPath = __DIR__.'/../resources/views';
         $this->loadViewsFrom($viewsPath, 'boravel');
         $this->publishes(
             [
-                $viewsPath => base_path('resources/views/vendor/boravel'),
+                $viewsPath => base_path('resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'boravel'),
             ],
             'views'
         );

@@ -1,6 +1,7 @@
 <?php namespace Boravel\Http\Controllers\Modules\Book;
 
 use Activity;
+use Illuminate\Http\Request;
 use Boravel\Models\Components\Book\Repos\EntityRepo;
 use Illuminate\Http\Response;
 use Views;
