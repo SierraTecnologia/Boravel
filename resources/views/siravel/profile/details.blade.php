@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <h2>Update Address</h2>
 
-            <form id="" method="post" action="{!! route('siravel.account.profile.update') !!}">
+            <form id="" method="post" action="{!! route('account.profile.update') !!}">
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <input class="form-control" name="street" placeholder="Street">
