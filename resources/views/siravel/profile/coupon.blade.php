@@ -8,7 +8,7 @@
         <div class="col-md-6 col-md-offset-3">
             <h2>Coupon</h2>
 
-            <form id="" method="post" action="{!! route('siravel.account.profile.coupon') !!}">
+            <form id="" method="post" action="{!! route('account.profile.coupon') !!}">
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <input class="form-control" name="coupon" placeholder="Coupon Code">

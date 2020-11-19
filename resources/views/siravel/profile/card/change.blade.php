@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-md-6 col-md-offset-3 well">
-                <form id="userPayment" method="post" action="{{ route('siravel.account.card-change') }}">
+                <form id="userPayment" method="post" action="{{ route('account.card-change') }}">
                     {!! Form::token(); !!}
 
                     @include('siravel-frontend::profile.card.card-form')

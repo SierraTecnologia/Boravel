@@ -12,7 +12,7 @@
                 <div class="dropdown-menu">
                     @if (auth()->user())
                         <a class="dropdown-item" href="{{ url('user/settings') }}"><span class="fa fa-user"></span> Settings</a>
-                        <a class="dropdown-item" href="{{ route('siravel.account.profile') }}"><span class="fa fa-id-card"></span> Profile</a>
+                        <a class="dropdown-item" href="{{ route('account.profile') }}"><span class="fa fa-id-card"></span> Profile</a>
                         <a class="dropdown-item" href="{{ route('siravel.account.favorites') }}"><span class="fa fa-heart"></span> Favorites</a>
                         <a class="dropdown-item" href="{{ route('siravel.account.purchases') }}"><span class="fa fa-dollar"></span> Purchases</a>
                         <a class="dropdown-item" href="{{ route('siravel.account.orders') }}"><span class="fa fa-truck"></span> Orders</a>

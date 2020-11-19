@@ -1,4 +1,4 @@
-@extends('cms-frontend::layout.master')
+@extends('cms-frontend::layouts.master')
 
 @section('stylesheets')
     <link rel="stylesheet" href="{!! asset('css/store.css') !!}">
