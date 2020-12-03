@@ -196,7 +196,7 @@ abstract class ResourceController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return $this->showForm($subtitle = _('Create'), $action = 'store');
     }

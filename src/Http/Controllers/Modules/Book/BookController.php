@@ -60,7 +60,7 @@ class BookController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $this->checkPermission('book-create-all');
         $this->setPageTitle(trans('entities.books_create'));
