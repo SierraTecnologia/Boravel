@@ -3,8 +3,8 @@
 use Boravel\Models\Components\Book\Repos\EntityRepo;
 use Boravel\Exceptions\FileUploadException;
 use Boravel\Exceptions\NotFoundException;
-use SiObjects\Entitys\Uploads\Attachment;
-use SiObjects\Entitys\Uploads\AttachmentService;
+use MediaManager\Entities\Uploads\Attachment;
+use MediaManager\Entities\Uploads\AttachmentService;
 use Illuminate\Http\Request;
 
 class AttachmentController extends Controller
@@ -16,7 +16,7 @@ class AttachmentController extends Controller
     /**
      * AttachmentController constructor.
      *
-     * @param \SiObjects\Entitys\Uploads\AttachmentService $attachmentService
+     * @param \MediaManager\Entities\Uploads\AttachmentService $attachmentService
      * @param Attachment                                   $attachment
      * @param EntityRepo                                   $entityRepo
      */

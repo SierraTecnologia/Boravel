@@ -3,8 +3,8 @@
 use Boravel\Models\Components\Book\Repos\EntityRepo;
 use Boravel\Exceptions\ImageUploadException;
 use Boravel\Repos\PageRepo;
-use SiObjects\Entitys\Uploads\Image;
-use SiObjects\Entitys\Uploads\ImageRepo;
+use MediaManager\Entities\Uploads\Image;
+use MediaManager\Entities\Uploads\ImageRepo;
 use Illuminate\Filesystem\Filesystem as File;
 use Illuminate\Http\Request;
 

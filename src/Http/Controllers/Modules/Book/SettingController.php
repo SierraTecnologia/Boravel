@@ -1,6 +1,6 @@
 <?php namespace Boravel\Http\Controllers\Modules\Book;
 
-use SiObjects\Entitys\Uploads\ImageService;
+use MediaManager\Entities\Uploads\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Setting;
