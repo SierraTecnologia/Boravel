@@ -64,5 +64,8 @@
                 "laravel/cashier"
             ]
         }
+    },
+    "require-dev": {
+        "phpro/grumphp": "^1.3"
     }
 }
