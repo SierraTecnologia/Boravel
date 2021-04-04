@@ -2,7 +2,7 @@
 
 namespace Boravel\Http\Resources;
 
-use App\Models\Entities\PostEntity;
+use Population\Manipule\Entities\PostEntity;
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
 use function SiUtils\html_purify;
 use function SiUtils\to_bool;
