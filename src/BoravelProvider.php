@@ -185,7 +185,7 @@ class BoravelProvider extends ServiceProvider
                 // try {
                 //     throw new \Exception();
                 // } catch (\Exception $e) {
-                //     dd($e);
+                //     dd('Boravel', $e);
                 // }
                 return new BoravelService(\Illuminate\Support\Facades\Config::get('generators.loader.models'));
             }
