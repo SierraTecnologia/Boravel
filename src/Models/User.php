@@ -5,6 +5,7 @@ namespace Boravel\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Facilitador\Models\User as UserBase;
+use Illuminate\Support\Facades\Hash;
 
 class User extends UserBase
 {
