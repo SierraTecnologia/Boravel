@@ -51,7 +51,7 @@ class CreateSexRelationsTables extends Migration
 			$table->string('premio', '');
             
 			$table->unsignedInteger('user_id')->nullable();
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+			// $table->foreign('user_id')->references('id')->on('users')->onDelete('set null'); // @todo nao foi deu ruim
 			$table->timestamps();
             $table->softDeletes();
 		});
@@ -64,7 +64,7 @@ class CreateSexRelationsTables extends Migration
 			$table->unsignedInteger('gamble_id')->nullable();
 			$table->foreign('gamble_id')->references('id')->on('gambles')->onDelete('set null');
 			$table->unsignedInteger('user_id')->nullable();
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+			// $table->foreign('user_id')->references('id')->on('users')->onDelete('set null'); // @todo nao foi deu ruim
 			$table->timestamps();
             $table->softDeletes();
 		});

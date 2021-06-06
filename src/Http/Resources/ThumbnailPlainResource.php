@@ -2,8 +2,8 @@
 
 namespace Boravel\Http\Resources;
 
-use App\Models\Entities\ThumbnailEntity;
-use Illuminate\Http\Resources\Json\Resource;
+use Population\Manipule\Entities\ThumbnailEntity;
+use Illuminate\Http\Resources\Json\JsonResource as Resource;
 use Illuminate\Support\Facades\Storage;
 use function SiUtils\html_purify;
 use function SiUtils\to_int;

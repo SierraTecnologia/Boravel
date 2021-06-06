@@ -54,7 +54,7 @@ class BoravelProvider extends ServiceProvider
         //  * Decoy
         //  */
         // 'Boravel' => \Facilitador\Facades\Facilitador::class,
-        // 'BoravelURL' => \Facilitador\Facades\SupportURL::class,
+        // 'BoravelURL' => \Facilitador\Facades\PedreiroURL::class,
 
         // // Image resizing
         // 'Croppa' => \Bkwld\Croppa\Facade::class,
@@ -90,7 +90,7 @@ class BoravelProvider extends ServiceProvider
         // Image resizing
         \Bkwld\Croppa\ServiceProvider::class,
         // PHP utils
-        \Bkwld\Library\ServiceProvider::class,
+        \Muleta\Library\ServiceProvider::class,
         // BrowserDetect
         \Jenssegers\Agent\AgentServiceProvider::class,
         // File uploading
@@ -185,7 +185,7 @@ class BoravelProvider extends ServiceProvider
                 // try {
                 //     throw new \Exception();
                 // } catch (\Exception $e) {
-                //     dd($e);
+                //     dd('Boravel', $e);
                 // }
                 return new BoravelService(\Illuminate\Support\Facades\Config::get('generators.loader.models'));
             }

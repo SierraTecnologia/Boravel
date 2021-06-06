@@ -6,7 +6,7 @@ use Boravel\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use SiObject\Http\Requests\Admin\ArticleRequest;
 use Illuminate\Support\Facades\Auth;
-use Datatables;
+use DataTables as Datatables;
 
 class CalendarController extends Controller
 {

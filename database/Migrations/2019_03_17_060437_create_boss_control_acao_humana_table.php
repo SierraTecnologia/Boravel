@@ -49,8 +49,8 @@ class CreateBossControlAcaoHumanaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
-        Schema::dropIfExists('worklog_executed');
-        Schema::dropIfExists('worklog_estimated');
+        Schema::dropIfExists('spentables');
+        Schema::dropIfExists('spents');
+        Schema::dropIfExists('estimates');
     }
 }

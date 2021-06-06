@@ -1,6 +1,9 @@
 <?php
+/**
+ * @todo MEdiaManager
+ */
 
-use SiObjects\Entitys\Uploads\Image;
+use MediaManager\Entities\Uploads\Image;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
